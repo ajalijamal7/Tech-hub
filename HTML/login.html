@@ -2,57 +2,93 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login / Signup - TechHub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login / Signup - TechHub</title>
+  <link rel="stylesheet" href="../CSS/login.css" />
+  <link rel="stylesheet" href="../CSS/header.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../JS/login.js" defer></script>
 </head>
 
 <body>
 
-    <header>
-        <h1>TechHub</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="checkout.html">Checkout</a></li>
-                <li><a href="login.html">Login</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <div>
-        <div>
-            <div>
-                <button>Login</button>
-                <button>Sign Up</button>
-            </div>
 
-            <form>
-                <h2>Login to your account</h2>
-                <label>Email</label>
-                <input type="email" placeholder="you@example.com" required>
-                <label>Password</label>
-                <input type="password" placeholder="Enter password" required>
-                <button type="submit">Login</button>
-            </form>
-
-            <form>
-                <h2>Create a new account</h2>
-                <label>Full Name</label>
-                <input type="text" placeholder="Your full name" required>
-                <label>Email</label>
-                <input type="email" placeholder="you@example.com" required>
-                <label>Password</label>
-                <input type="password" placeholder="Choose a password" required>
-                <label>Confirm Password</label>
-                <input type="password" placeholder="Confirm password" required>
-                <button type="submit">Sign Up</button>
-            </form>
+  <header>
+    <div class="container">
+      <div class="logo-wrap">
+      <img src="../HTML/Icons/TechHub_Logo.png">
+      <h1>TechHub</h1>
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="checkout.html">Checkout</a></li>
+          <li><a href="login.html" class="active">Login</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          ☰
         </div>
+      </nav>
     </div>
+  </header>
+
+
+  <div class="body-container" id="body-container">
+    <div class="form-container sign-up">
+      <form>
+        <h1>Create Account</h1>
+        <div class="social-icons">
+          <a href="#" class="icon"><img src="Icons/icons8-facebook-50.png" alt="Facebook"></a>
+          <a href="#" class="icon"><img src="Icons/icons8-instagram-50.png" alt="Instagram"></a>
+          <a href="#" class="icon"><img src="Icons/icons8-linkedin-50.png" alt="Linkedin"></a>
+          <a href="#" class="icon"><img src="Icons/icons8-x-50.png" alt="X"></a>
+        </div>
+        <span>or use your email for registeration</span>
+        <input type="text" placeholder="Name" />
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button id="registerBtn" type="submit">Sign Up</button>
+      </form>
+    </div>
+    <div class="form-container sign-in">
+      <form>
+        <h1>Sign In</h1>
+        <div class="social-icons">
+          <a href="#" class="icon"><img src="Icons/icons8-facebook-50.png" alt="Facebook"></a>
+          <a href="#" class="icon"><img src="Icons/icons8-instagram-50.png" alt="Instagram"></a>
+          <a href="#" class="icon"><img src="Icons/icons8-linkedin-50.png" alt="Linkedin"></a>
+          <a href="#" class="icon"><img src="Icons/icons8-x-50.png" alt="X"></a>
+        </div>
+        <span>or use your email password</span>
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <a href="#">Forget Your Password?</a>
+        <button id="loginBtn">Sign In</button>
+      </form>
+    </div>
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <h1>Welcome !</h1>
+          <p>Enter your personal details to use all of site features</p>
+          <button class="hidden" id="login">Sign In</button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h1>Hello, Friend!</h1>
+          <p>
+            Register with your personal details to use all of site features
+          </p>
+          <button class="hidden" id="register">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </body>
 
