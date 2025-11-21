@@ -7,7 +7,7 @@
   flex-wrap: nowrap; 
   max-width: 1200px;
   margin: 0 auto 50px;
-  padding: 0 15px;
+  padding: 10px 15px;
   justify-content: flex-start;
   align-items: flex-start; 
   min-height: 400px;
@@ -21,7 +21,7 @@
 }
 .cart-section h2 {
   margin-bottom: 25px;
-  color: #0033cc;
+  color: #299b0f;
   font-weight: 700;
   font-size: 1.8rem;
 }
@@ -29,7 +29,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
+  background: #484848;
   padding: 15px 20px;
   margin-bottom: 20px;
   border-radius: 10px;
@@ -56,7 +56,7 @@
 
 .cart-item-details h3 {
   font-size: 1.2rem;
-  color: #002b80;
+  color: #39ad1f;
   margin-bottom: 6px;
   font-weight: 600;
   white-space: nowrap;
@@ -65,7 +65,7 @@
 }
 
 .cart-item-details p {
-  color: #007BFF;
+  color: #3db322;
   font-size: 1rem;
   font-weight: 500;
 }
@@ -79,7 +79,7 @@
 }
 
 .quantity-btn {
-  background: #0033cc;
+  background: #2f9219;
   border: none;
   color: white;
   font-size: 20px;
@@ -95,17 +95,17 @@
 }
 
 .quantity-btn:hover {
-  background: #002080;
+  background: #57fc32;
 }
 
 .quantity-btn:active {
-  background: #00144d;
+  background: #289310;
 }
 
 .quantity-control span {
   font-weight: 700;
   font-size: 1.1rem;
-  color: #002b80;
+  color: #34921f;
   user-select: none;
 }
 
@@ -135,11 +135,11 @@
 
 
 .checkout-section {
-  flex: 0 0 40%;
-  min-width: 320px;
-  max-width: 450px;
-  background: white;
-  padding: 30px 30px 35px;
+  width: 100%;
+  max-width:600px;
+  background: rgb(62, 62, 62);
+  padding: 10px 20px;
+  box-sizing: border-box;
   border-radius: 14px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.07);
   height: auto;
@@ -147,7 +147,7 @@
 
 .checkout-section h2 {
   margin-bottom: 30px;
-  color: #0033cc;
+  color: #39ab1f;
   font-weight: 700;
   font-size: 1.9rem;
 }
@@ -161,14 +161,14 @@
   margin-bottom: 8px;
   display: block;
   font-size: 1rem;
-  color: #002b80;
+  color: #339b1c;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
   padding: 12px 14px;
-  border: 2px solid #0033cc;
+  border: 2px solid #40a928;
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
@@ -179,7 +179,7 @@
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: #001f80;
+  border-color: #2b8d15;
   outline: none;
 }
 
@@ -195,19 +195,19 @@
   margin-bottom: 14px;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #0040cc;
+  color: #37b01c;
 }
 
 .total {
   font-weight: 800;
   font-size: 1.3rem;
-  color: #0033cc;
+  color: #258110;
 }
 
 .place-order-btn {
   width: 100%;
   padding: 15px;
-  background: #0033cc;
+  background: #22850c;
   color: white;
   font-size: 1.15rem;
   font-weight: 700;
@@ -219,7 +219,7 @@
 }
 
 .place-order-btn:hover {
-  background: #002080;
+  background: #90f0ab;
 }
 
 .modal {
@@ -246,7 +246,7 @@
 .modal-content button {
   margin-top: 25px;
   padding: 12px 25px;
-  background: #0033cc;
+  background: #36b818;
   color: white;
   font-weight: 700;
   border: none;
@@ -256,11 +256,11 @@
 }
 
 .modal-content button:hover {
-  background: #002080;
+  background: rgb(134, 247, 217);
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .container {
     flex-wrap: wrap;
     flex-direction: column;

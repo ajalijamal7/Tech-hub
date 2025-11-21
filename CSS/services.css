@@ -1,9 +1,7 @@
 
-
-
-
-
-
+.container h1{
+  color: #37b31b;
+}
 .services-grid {
   display: grid;
   gap: 40px;
@@ -11,15 +9,16 @@
 }
 
 .service-card {
-  background: white;
+  background: rgb(46, 46, 46);
   border-radius: 15px;
   padding: 25px 30px;
-  box-shadow: 0 6px 18px rgba(0, 51, 255, 0.15);
+  box-shadow: 0 6px 18px rgba(120, 121, 123, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   transition: transform 0.3s ease;
+  border: #268b10 solid;
 }
 .service-card:hover {
   transform: translateY(-10px);
@@ -33,7 +32,7 @@
 }
 
 .service-title {
-  color: #0033ff;
+  color: #499638;
   font-size: 1.6rem;
   margin-bottom: 15px;
   font-weight: 700;
@@ -42,7 +41,7 @@
 .service-summary {
   font-size: 1.05rem;
   margin-bottom: 20px;
-  color: #555;
+  color: #c7c4c4;
 }
 
 
@@ -54,21 +53,21 @@
 
 .read-more-label {
   cursor: pointer;
-  color: #0033ff;
+  color: #499638;
   font-weight: 600;
   margin-bottom: 0;
   user-select: none;
   transition: color 0.3s ease;
 }
 .read-more-label:hover {
-  color: #001f99;
+  color: #94f57e;
 }
 
 .read-more-content {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s ease;
-  color: #444;
+  color: #a09d9d;
   font-size: 1rem;
   margin-top: 10px;
 }
@@ -89,14 +88,15 @@
 }
 
 .pc-builder {
-  background: #e6f0ff;
+  background: #2e2e2e;
   padding: 40px 30px;
   max-width: 600px;
   margin: 50px auto;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 43, 128, 0.15);
   text-align: center;
-  color: #002B80;
+  color: #186c06;
+  border: #268b10 solid;
 }
 
 .pc-builder h2 {
@@ -107,7 +107,7 @@
 .pc-builder p {
   margin-bottom: 30px;
   font-size: 1.1em;
-  color: #0040cc;
+  color: #37b71a;
 }
 
 .pc-builder form {
@@ -129,21 +129,21 @@
 .form-group select {
   width: 100%;
   padding: 10px 12px;
-  border: 2px solid #002B80;
+  border: 2px solid #499638;
   border-radius: 6px;
   font-size: 1em;
-  color: #002B80;
+  color: #000000;
   background: white;
   transition: border-color 0.3s ease;
 }
 
 .form-group select:focus {
-  border-color: #0056D2;
+  border-color: #499638;
   outline: none;
 }
 
 .order-btn {
-  background: #007BFF;
+  background: #034b08;
   color: white;
   border: none;
   padding: 14px 0;
@@ -155,7 +155,7 @@
 }
 
 .order-btn:hover {
-  background: #0056D2;
+  background: #9bec89;
 }
 
 
@@ -169,7 +169,7 @@
 
 
 
-@media (max-width: 480px) {
+@media (max-width: 150px) {
   body {
     padding: 30px 15px;
   }

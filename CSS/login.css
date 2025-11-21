@@ -3,16 +3,17 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    
+   
 }
 
 body{
-    background-color: #c9d6ff2c;
-    background: linear-gradient(to right, #e2e2e226, #c9d6ff27);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     height: 100vh;
+    
 }
 
 .body-container {
@@ -22,7 +23,7 @@ body{
 }
 
 .body-container{
-    background-color: #fffffff8;
+    background-color: #383838;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     position: relative;
@@ -44,15 +45,15 @@ body{
 }
 
 .body-container a{
-    color: #333333;
+    color: #838181;
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;
 }
 
 .body-container button{
-    background-color:#0033ff;
-    color: #fff;
+    background-color:#499638;
+    color: #000000;
     font-size: 12px;
     padding: 10px 45px;
     border: 1px solid transparent;
@@ -66,11 +67,11 @@ body{
 
 .body-container button.hidden{
     background-color: transparent;
-    border-color: #fff;
+    border-color: #0a0a0a;
 }
 
 .body-container form{
-    background-color: #fff;
+    background-color: #383838;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,7 +81,7 @@ body{
 }
 
 .body-container input{
-    background-color: #eee;
+    background-color: #ffffff;
     border: none;
     margin: 8px 0;
     padding: 10px 15px;
@@ -101,6 +102,7 @@ body{
     left: 0;
     width: 50%;
     z-index: 2;
+    color: #41ba47;
 }
 
 .body-container.active .sign-in{
@@ -112,6 +114,7 @@ body{
     width: 50%;
     opacity: 0;
     z-index: 1;
+     color: #41ba47;
 }
 
 .body-container.active .sign-up{
@@ -138,6 +141,7 @@ body{
 
 .social-icons a{
     border: 1px solid #ccc;
+    background-color: #ccc;
     border-radius: 20%;
     display: inline-flex;
     justify-content: center;
@@ -157,7 +161,7 @@ body{
     overflow:hidden;
     transition: all 0.6s ease-in-out;
     border-radius: 150px 0 0 100px;
-    z-index: 1000;
+    z-index: 900;
 }
 
 .body-container.active .toggle-container{
@@ -166,10 +170,10 @@ body{
 }
 
 .toggle{
-    background-color: #0033ff;
+    background-color: #499638;
     height: 100%;
-    background: linear-gradient(to right, #0033ff, #4b61f2fb); /* deep blue to light blue */;
-    color: #fff;
+    background: linear-gradient(to right, #0a7210, #6bdd4f); /* deep blue to light blue */;
+    color: #000000;
     position: relative;
     left: -100%;
     height: 100%;
@@ -212,4 +216,144 @@ body{
 
 .body-container.active .toggle-right{
     transform: translateX(200%);
+}
+
+@media (max-width: 768px) {
+
+    /* allow scrolling instead of fixed viewport (added) */
+    body {
+        height: auto;                 /* added */
+        padding: 20px 0;              /* added */
+    }
+
+    /* stack children and bring toggle container to the top (added) */
+    .body-container {
+        display: flex;                /* added */
+        flex-direction: column-reverse; /* added – last child (toggle) appears on top */
+        align-items: stretch;         /* added */
+        width: 100%;                  /* added */
+        max-width: 480px;             /* added */
+        min-height: auto;             /* added */
+        border-radius: 20px;          /* added */
+        padding: 0;                   /* added */
+    }
+
+    .body-container form {
+        padding: 20px;                /* added */
+        height: auto;                 /* added */
+    }
+
+    /* turn off absolute layout and transitions for forms (added) */
+    .form-container {
+        position: static;             /* added */
+        width: 100%;                  /* added */
+        height: auto;                 /* added */
+        transition: none !important;  /* added */
+    }
+
+    /* no sliding / transforms on mobile (added) */
+    .sign-in,
+    .sign-up {
+        width: 100%;                  /* added */
+        left: 0;                      /* added */
+        transform: none !important;   /* added */
+    }
+
+    /* show sign-in by default, hide sign-up (added) */
+    .sign-in {
+        display: block;               /* added */
+    }
+
+    .sign-up {
+        display: none;                /* added */
+        opacity: 1;                   /* added – just in case */
+    }
+
+    /* when .active, show sign-up and hide sign-in (no animation) (added) */
+    .body-container.active .sign-in {
+        display: none;                /* added */
+    }
+
+    .body-container.active .sign-up {
+        display: block;               /* added */
+        animation: none;              /* added */
+    }
+
+    /* toggle container becomes full-width bar on top (added) */
+    .toggle-container {
+        position: static;             /* added */
+        width: 100%;                  /* added */
+        height: auto;                 /* added */
+        border-radius: 20px 20px 0 0; /* added */
+        overflow: visible;            /* added */
+        transform: none !important;   /* added */
+        transition: none !important;  /* added */
+        z-index: 1;                   /* added */
+    }
+
+    .toggle {
+        width: 100%;                  /* added */
+        left: 0;                      /* added */
+        transform: none !important;   /* added */
+        height: 100%;                 /* added */
+        transition: none !important;  /* added */
+        border-radius: 20px 20px 0 0; /* added */
+    }
+
+    .toggle-panel {
+        position: static;             /* added */
+        width: 100%;                  /* added */
+        height: auto;                 /* added */
+        padding: 20px;                /* added */
+        transform: none !important;   /* added */
+        text-align: center;           /* added */
+    }
+
+    /* show only one toggle message at a time (added) */
+    .toggle-left,
+    .toggle-right {
+        display: none;                /* added */
+    }
+
+    /* default (sign-in view): show right panel text (added) */
+    .toggle-right {
+        display: flex;                /* added */
+    }
+
+    /* active (sign-up view): show left panel text instead (added) */
+    .body-container.active .toggle-right {
+        display: none;                /* added */
+    }
+
+    .body-container.active .toggle-left {
+        display: flex;                /* added */
+    }
+
+    /* nicer spacing on small screens (added) */
+    .social-icons {
+        display: flex;                /* added */
+        justify-content: center;      /* added */
+    }
+
+    .body-container input {
+        font-size: 14px;              /* added */
+        padding: 12px 16px;           /* added */
+    }
+
+    .body-container p {
+        text-align: center;           /* added */
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* edge-to-edge on very small phones (added) */
+    .body-container {
+        max-width: 100%;              /* added */
+        border-radius: 0;             /* added */
+    }
+
+    .body-container button {
+        width: 100%;                  /* added */
+    }
 }
