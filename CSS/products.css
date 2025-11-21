@@ -1,8 +1,10 @@
-
+.products-page{
+  padding-top: 15px;
+}
 
 
 .product-card {
-  background: white;
+  background: #3d434eae;
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -53,17 +55,17 @@
 #search-bar {
   width: 100%;
   padding: 8px 35px 8px 12px;
-  border: 2px solid #0033ff;
+  border: 2px solid #499638;
   border-radius: 20px;
   font-size: 0.95em;
-  color: #0033ff;
-  background-color: #f4f4f4;
+  color: 499638;
+  background-color: #ffffff;
   transition: all 0.3s ease;
 }
 
 #search-bar:focus {
   outline: none;
-  border-color: #0056d2;
+  border-color: #499638;
   background-color: #ffffff;
   box-shadow: 0 0 8px rgba(0, 51, 255, 0.15);
 }
@@ -73,19 +75,19 @@
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  color: #0033ff;
+  color: #499638;
   font-size: 1em;
   cursor: pointer;
 }
 
 #search-bar-div i:hover {
-  color: #0056d2;
+  color: #28c870;
 }
 
 .filter-toggle {
   display: none;
   margin-bottom: 20px;
-  background-color: #0033ff;
+  background-color: #499638;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -94,12 +96,12 @@
 }
 .filters {
   flex: 0 0 250px;
-  background: white;
+  background: rgb(0, 0, 0);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   user-select: none;
-  
+  border: #28c870 solid;
   position: sticky;
   top: 20px;
   max-height: 80vh;
@@ -108,7 +110,7 @@
 
 .filters h3 {
   margin-bottom: 15px;
-  color: #0033ff;
+  color: #499638;
 }
 
 .filters label {
@@ -116,7 +118,7 @@
   margin-bottom: 10px;
   font-weight: 500;
   cursor: pointer;
-  color: #444;
+  color: #a39e9e;
 }
 
 .filters input[type="checkbox"] {
@@ -135,7 +137,8 @@ main {
 }
 
 .product-card {
-  background: white;
+  background: rgb(49, 48, 48);
+  border: solid #28c870;
   border-radius: 12px;
   padding: 15px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
@@ -156,17 +159,17 @@ main {
 .product-card h3 {
   font-size: 1.1em;
   margin-bottom: 8px;
-  color: #0033ff;
+  color: #499638;
 }
 
 .product-card .price {
   font-weight: 700;
-  color: #222;
+  color: #3c9626;
   margin-bottom: 15px;
 }
 
 .product-card button {
-  background-color: #0033ff;
+  background-color: #499638;
   color: white;
   border: none;
   padding: 10px;
@@ -212,7 +215,7 @@ main {
 }
 
 
-@media (max-width: 992px) {
+@media (max-width: 768px){
   header .container {
     flex-direction: column;
     align-items: flex-start;
@@ -244,7 +247,7 @@ main {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width:768px){
   header h1 {
     font-size: 1.5em;
   }

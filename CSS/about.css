@@ -1,15 +1,17 @@
-
-
-
-
+main{
+  padding-top: 10px;
+}
+section{
+   padding: 15px;
+}
 
 .about-intro {
-  background: #e6f0ff;
+  background: #e0f3eb;
   padding: 50px 20px;
   border-radius: 10px;
   margin-top: 40px;
   text-align: center;
-  color: #002B80;
+  color: #166405;
 }
 
 .about-intro h2 {
@@ -33,12 +35,12 @@
 
 .mission,
 .vision {
-  background: #fff;
+  background: #e0f3eb;
   padding: 30px 25px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   flex: 1 1 45%;
-  color: #002B80;
+  color: #166405;
   transition: transform 0.3s ease;
   max-width: 450px;
 }
@@ -61,11 +63,11 @@
 }
 
 .contact {
-  background: #e6f0ff;
+  background: #e0f3eb;
   padding: 30px 25px;
   border-radius: 10px;
   margin-bottom: 60px;
-  color: #002B80;
+  color: #166405;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
