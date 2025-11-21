@@ -2,62 +2,84 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>About Us - TechHub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - TechHub</title>
+  <link rel="stylesheet" href="../CSS/about.css" />
+  <link rel="stylesheet" href="../CSS/header.css" />
+ 
+  <script src="../JS/hamburger.js"></script>
 </head>
 
 <body>
+  <header>
+    <div class="container">
+       <div class="logo-wrap">
+      <img src="../HTML/Icons/TechHub_Logo.png">
+      <h1>TechHub</h1>
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html" class="active">About Us</a></li>
+          <li><a href="checkout.html">Checkout</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
 
-    <header>
-        <h1>TechHub</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="checkout.html">Checkout</a></li>
-                <li><a href="login.html">Login</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section>
-        <h2>About PC Pulse</h2>
-        <p>PC Pulse is your trusted partner for high-quality PC components and custom PC builds, providing cutting-edge
-            technology solutions tailored to your needs.</p>
-    </section>
-
-    <section>
-        <div>
-            <h3>Our Mission</h3>
-            <p>To deliver premium PC building experiences by offering reliable components, expert guidance, and
-                exceptional customer service to enthusiasts and professionals alike.</p>
+        <!-- Hamburger menu for mobile view (expandable) -->
+        <div class="hamburger" id="hamburger">
+          ☰
         </div>
-        <div>
-            <h3>Our Vision</h3>
-            <p>To be the leading destination for PC builders in Lebanon and beyond, known for innovation, quality, and a
-                community-driven approach.</p>
-        </div>
-    </section>
 
-    <section>
-        <h3>Contact Us</h3>
-        <p><strong>Email:</strong> info@pcpulse.com</p>
-        <p><strong>Phone:</strong> +961 70 123 456</p>
-        <p><strong>Location:</strong> Hamra, Beirut, Lebanon</p>
-    </section>
+      </nav>
+    </div>
+  </header>
 
-    <section>
-        <h3>Our Location</h3>
+  <section class="about-intro container">
+    <h2>About PC Pulse</h2>
+    <p>PC Pulse is your trusted partner for high-quality PC components and custom PC builds, providing cutting-edge
+      technology solutions tailored to your needs.</p>
+  </section>
 
-    </section>
+  <section class="mission-vision container">
+    <div class="mission">
+      <h3>Our Mission</h3>
+      <p>To deliver premium PC building experiences by offering reliable components, expert guidance, and exceptional
+        customer service to enthusiasts and professionals alike.</p>
+    </div>
+    <div class="vision">
+      <h3>Our Vision</h3>
+      <p>To be the leading destination for PC builders in Lebanon and beyond, known for innovation, quality, and a
+        community-driven approach.</p>
+    </div>
+  </section>
 
-    <footer>
-        <p>© 2025 PC Pulse. All rights reserved.</p>
-    </footer>
+  <!-- Contact Section -->
+  <section class="contact container">
+    <h3>Contact Us</h3>
+    <p><strong>Email:</strong> info@pcpulse.com</p>
+    <p><strong>Phone:</strong> +961 70 123 456</p>
+    <p><strong>Location:</strong> Hamra, Beirut, Lebanon</p>
+  </section>
 
+  <!-- Map Section -->
+  <section class="map-container container">
+    <h3>Our Location</h3>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.5893542878654!2d35.501777415209264!3d33.89379158065273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f170c729e4a35%3A0xa0b8ef1a61c84770!2sBeirut!5e0!3m2!1sen!2slb!4v1716373055504!5m2!1sen!2slb"
+      width="100%" height="400" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </section>
+
+
+
+
+  <footer>
+    <p>© 2025 PC Pulse. All rights reserved.</p>
+  </footer>
 </body>
 
 </html>
