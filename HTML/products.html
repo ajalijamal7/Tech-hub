@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products - TechHub</title>
+  <link rel="stylesheet" href="../CSS/products.css" />
+
+<link rel="stylesheet" href="../CSS/header.css" />  <script src="../JS/products.js" defer></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <div class="logo-wrap">
+      <img src="../HTML/Icons/TechHub_Logo.png">
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html" class="active">Products</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="checkout.html" id="checkout-link">Checkout
+              <span id="cart-count" class="cart-count-badge">0</span></a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+         <!-- Hamburger menu for mobile view (expandable) -->
+        <div class="hamburger" id="hamburger"> 
+          ☰
+        </div>
+
+      </nav>
+    </div>
+  </header>
+
+  <section class="products-page container">
+
+
+
+    <button class="filter-toggle">Filter Products</button>
+
+    <aside class="filters">
+     
+      <div id="search-bar-div">
+        <form action="">
+          <input id="search-bar" type="search">
+          <i class="fa fa-search"></i>
+        </form>
+      </div>
+
+       <h3>Filter by Brand</h3>
+      <label><input type="radio" name="brand" value="ALL" checked /> All Brands</label>
+      <label><input type="radio" name="brand" value="NVIDIA" /> NVIDIA</label>
+      <label><input type="radio" name="brand" value="Intel" /> Intel</label>
+      <label><input type="radio" name="brand" value="Sony" />Sony</label>
+      <label><input type="radio" name="brand" value="Microsoft" />Microsoft</label>
+
+
+      <h3>Filter by Category</h3>
+      <label><input type="radio" name="category" value="ALL" checked /> All Categories</label>
+      <label><input type="radio" name="category" value="CPU" /> CPU</label>
+      <label><input type="radio" name="category" value="GPU" /> GPU</label>
+      <label><input type="radio" name="category" value="RAM" /> RAM</label>
+      <label><input type="radio" name="category" value="Motherboard" /> Motherboard</label>
+      <label><input type="radio" name="category" value="Mouse" /> Mouse</label>
+      <label><input type="radio" name="category" value="Keyboard" /> Keyboard</label>
+      <label><input type="radio" name="category" value="Console" /> Console</label>
+      <label><input type="radio" name="category" value="Accessory" /> Accessories</label>
+
+    </aside>
+
+
+    <main>
+
+
+      <div class="product-grid">
+
+      </div>
+    </main>
+
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 TechHub. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+
+
+</body>
+
+</html>

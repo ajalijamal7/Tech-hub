@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services - TechHub</title>
+  <link rel="stylesheet" href="../CSS/header.css" />
+  <link rel="stylesheet" href="../CSS/services.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../JS/services.js"></script>
+
+  <script src="../JS/hamburger.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="logo-wrap">
+        <img src="../HTML/Icons/TechHub_Logo.png">
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="checkout.html">Checkout</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+
+        <!-- Hamburger menu for mobile view (expandable) -->
+        <div class="hamburger" id="hamburger">
+          ☰
+        </div>
+
+      </nav>
+    </div>
+  </header>
+  <div class="container">
+    <h1>Our Services</h1>
+    <div class="services-grid">
+
+      <article class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1161/1161381.png" alt="Build PC" class="service-img" />
+        <h2 class="service-title">Custom PC Building</h2>
+        <p class="service-summary">We build custom PCs tailored to your needs — gaming, work, or general use.</p>
+        <input type="checkbox" id="toggle1" class="read-more-toggle" />
+        <label for="toggle1" class="read-more-label"></label>
+        <div class="read-more-content">
+          <p>Our expert technicians select and assemble quality components to deliver high-performance systems that fit
+            your budget and preferences. We optimize cooling, cable management, and software setup for a smooth
+            experience.</p>
+          <p>We offer consultations to recommend the best hardware and future-proof your build. Plus, all our builds
+            come with a warranty and post-build support.</p>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2910/2910790.png" alt="PC Maintenance" class="service-img" />
+        <h2 class="service-title">PC Repair & Maintenance</h2>
+        <p class="service-summary">Keep your PC running smoothly with our repair and maintenance services.</p>
+        <input type="checkbox" id="toggle2" class="read-more-toggle" />
+        <label for="toggle2" class="read-more-label"></label>
+        <div class="read-more-content">
+          <p>We troubleshoot hardware and software issues, perform virus removal, upgrade components, and provide
+            regular cleaning to prevent overheating.</p>
+          <p>Our team ensures your system stays fast and reliable, minimizing downtime and extending the life of your
+            PC. Fast turnaround and affordable pricing guaranteed.</p>
+        </div>
+      </article>
+
+      <section class="pc-builder">
+        <h2>Build Your PC</h2>
+        <p>Choose your components and order your custom PC.</p>
+        <form>
+          <div class="form-group">
+            <label for="cpu">CPU</label>
+            <select id="cpu" name="cpu">
+              <option value="" disabled selected>Select CPU</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="gpu">GPU</label>
+            <select id="gpu" name="gpu">
+              <option value="" disabled selected>Select GPU</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="Motherboard">Motherboard</label>
+            <select id="motherboard" name="Motherboard">
+              <option value="" disabled selected>Select RAM</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="ram">RAM</label>
+            <select id="ram" name="ram">
+              <option value="" disabled selected>Select RAM</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="storage">Storage</label>
+            <select id="storage" name="storage">
+              <option value="" disabled selected>Select Storage</option>
+            </select>
+          </div>
+
+          <button type="submit" class="order-btn" id="btn-order">Order Now</button>
+        </form>
+      </section>
+
+
+    </div>
+  </div>
+</body>
+      <footer>
+        <div class="container">
+          <p>&copy; 2025 TechHub. All rights reserved.</p>
+        </div>
+      </footer>
+</html>

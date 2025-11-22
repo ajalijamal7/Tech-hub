@@ -1,0 +1,430 @@
+/* =========================================
+   COLOR VARIABLES — ONE GREEN ONLY
+========================================= */
+:root {
+  --green: #10b981;           /* your only green */
+  --green-dark: #10b981;      /* darker shade for hover */
+  --green-light: #1cf7ae;     /* lighter shade for accents */
+  --green-glow: #0b865d; /* green glow effects */
+  --gray-light: #c7c4c4;      /* light gray text */
+  --gray-medium: #a09d9d;     /* medium gray text */
+  --gray-dark: #666666;       /* dark gray */
+  --dark-bg: #2e2e2e;         /* cards + pc builder background */
+  --darker-bg: #1a1a1a;       /* page background */
+  --white: #ffffff;           /* white text */
+  --black: #000000;           /* black */
+  --border-dark: #444444;     /* border lines */
+}
+
+/* =========================================
+   GENERAL - DARK THEME
+========================================= */
+body {
+  background-color: var(--darker-bg);
+  color: var(--gray-light);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+.container h1 {
+  color: var(--green);
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px var(--green-glow);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.container h1:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--green);
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--green-glow);
+}
+
+.services-grid {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 2rem 0;
+}
+
+
+/* =========================================
+   SERVICE CARDS - DARK THEME
+========================================= */
+
+.service-card {
+  background: var(--dark-bg);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid var(--green);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green-glow);
+}
+
+.service-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  border-color: var(--green-light);
+}
+
+.service-card:hover:before {
+  background: linear-gradient(90deg, var(--green), var(--green-light), var(--green));
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.service-img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 25px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-img {
+  transform: scale(1.1);
+}
+
+.service-title {
+  color: var(--green);
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-shadow: 0 0 5px var(--green-glow);
+}
+
+.service-summary {
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+  color: var(--gray-light);
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   READ MORE TOGGLE - DARK THEME
+========================================= */
+
+.read-more-toggle {
+  display: none;
+}
+
+.read-more-label {
+  cursor: pointer;
+  color: var(--green);
+  font-weight: 600;
+  margin-bottom: 0;
+  user-select: none;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(55, 179, 27, 0.1);
+  border: 1px solid var(--green);
+}
+
+.read-more-label:hover {
+  background: rgba(55, 179, 27, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--green-glow);
+}
+
+.read-more-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  color: var(--gray-medium);
+  font-size: 1rem;
+  margin-top: 15px;
+  line-height: 1.7;
+  text-align: left;
+  width: 100%;
+}
+
+.read-more-content ul {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.read-more-content li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 10px;
+}
+
+.read-more-content li:before {
+  content: "•";
+  color: var(--green);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.read-more-toggle:checked ~ .read-more-content {
+  max-height: 500px;
+}
+
+.read-more-toggle:checked + .read-more-label::after {
+  content: " Read less ▲";
+  font-size: 0.9rem;
+}
+
+.read-more-label::after {
+  content: " Read more ▼";
+  font-size: 0.9rem;
+}
+
+
+/* =========================================
+   PC BUILDER SECTION - DARK THEME
+========================================= */
+
+.pc-builder {
+  background: var(--dark-bg);
+  padding: 50px 40px;
+  max-width: 700px;
+  margin: 60px auto;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  color: var(--white);
+  border: 2px solid var(--green);
+  position: relative;
+  overflow: hidden;
+}
+
+.pc-builder:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--green);
+  box-shadow: 0 0 15px var(--green-glow);
+}
+
+.pc-builder h2 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+  color: var(--green);
+  font-weight: 700;
+  text-shadow: 0 0 10px var(--green-glow);
+}
+
+.pc-builder p {
+  margin-bottom: 35px;
+  font-size: 1.1rem;
+  color: var(--gray-light);
+  line-height: 1.7;
+}
+
+.pc-builder form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--green);
+  font-size: 1.1rem;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--green);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--white);
+  background: var(--darker-bg);
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%2337b31b' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+}
+
+.form-group select:focus {
+  border-color: var(--green-light);
+  outline: none;
+  box-shadow: 0 0 15px var(--green-glow);
+  background-color: var(--dark-bg);
+}
+
+.form-group select option {
+  background: var(--darker-bg);
+  color: var(--white);
+  padding: 10px;
+}
+
+.order-btn {
+  background: var(--green);
+  color: var(--white);
+  border: none;
+  padding: 16px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.order-btn:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.order-btn:hover:before {
+  left: 100%;
+}
+
+.order-btn:hover {
+  background: var(--green-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px var(--green-glow);
+}
+
+/* Success Message */
+.success-message {
+  background: rgba(55, 179, 27, 0.1);
+  color: var(--green);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  border: 1px solid var(--green);
+  display: none;
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE - DARK THEME
+========================================= */
+
+@media (max-width: 768px) {
+  .container h1 {
+    font-size: 2rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 1rem 0;
+  }
+  
+  .service-card {
+    padding: 25px 20px;
+  }
+  
+  .pc-builder {
+    padding: 35px 25px;
+    margin: 40px 15px;
+  }
+  
+  .pc-builder h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container h1 {
+    font-size: 1.8rem;
+  }
+  
+  .service-card {
+    padding: 20px 15px;
+  }
+  
+  .service-img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .service-title {
+    font-size: 1.4rem;
+  }
+  
+  .pc-builder {
+    padding: 25px 20px;
+  }
+  
+  .pc-builder h2 {
+    font-size: 1.8rem;
+  }
+  
+  .order-btn {
+    padding: 14px 0;
+    font-size: 1.1rem;
+  }
+}
+
+/* Loading Animation */
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.loading {
+  animation: pulse 1.5s infinite;
+}
