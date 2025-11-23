@@ -10,11 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-const isLoggedIn = false;
 
   document.getElementById("checkout-form").addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!isLoggedIn) {
+    if (!sessionStorage.getItem("currentUser")) {
       document.getElementById("loginModal").style.display = "flex";
     } else {
       alert("Order placed!");
@@ -30,9 +29,11 @@ const PCParts = JSON.parse(localStorage.getItem("PCParts")) || [];
 
 // Cache cart container
 const cartSection = document.querySelector(".cart-section");
+let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
 
 function renderCart() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
+  let cart = allCarts[currentUser.email] || []
   cartSection.innerHTML = "<h2>Your Cart</h2>";
 
   if (cart.length === 0) {
@@ -126,14 +127,17 @@ function updateSummary(subtotal) {
 }
 
 function deleteItem(index) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
+  let cart = allCarts[currentUser.email] || []
   cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
+  allCarts[currentUser]=cart
+  localStorage.setItem("allCarts", JSON.stringify(allCarts));
   renderCart();
 }
 
 function changeQuantity(index, delta) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
+  let cart = allCarts[currentUser.email] || []
   let product = cart[index];
   if (!product) return;
 
@@ -152,7 +156,8 @@ function changeQuantity(index, delta) {
 
   product.quantity = newQty;
   cart[index] = product;
-  localStorage.setItem("cart", JSON.stringify(cart));
+  allCarts[currentUser]=cart  
+  localStorage.setItem("allCarts", JSON.stringify(allCarts));
   renderCart();
 }
 

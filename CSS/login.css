@@ -1,10 +1,36 @@
+/* =========================================
+   COLOR VARIABLES - DARK THEME
+========================================= */
+:root {
+  --green-primary: #10b981;      /* main green */
+  --green-dark: #13855f;         /* darker green */
+  --green-light: #15e09d;        /* lighter green */
+  --green-bright: #0ff1a6;       /* bright green */
+  --green-glow: rgba(55, 179, 27, 0.3);
+  
+  --bg-dark: #1a1a1a;            /* main background */
+  --bg-card: #383838;            /* card background */
+  --bg-darker: #2e2e2e;          /* darker elements */
+  --bg-input: #ffffff;           /* input background */
+  
+  --text-green: #10b981;         /* green text */
+  --text-light: #e0e0e0;         /* light text */
+  --text-muted: #a0a0a0;         /* muted text */
+  --text-dark: #000000;          /* dark text */
+  --text-white: #ffffff;         /* white text */
+  
+  --border-light: #ccc;          /* light borders */
+  --border-dark: #444444;        /* dark borders */
+}
+
+/* =========================================
+   RESET & BASE STYLES
+========================================= */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    
-   
 }
 
 body{
@@ -13,24 +39,23 @@ body{
     justify-content: center;
     flex-direction: column;
     height: 100vh;
-    
+    background: var(--bg-dark);
+    color: var(--text-light);
 }
 
+/* =========================================
+   MAIN CONTAINER
+========================================= */
 .body-container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 40px 20px;
-}
-
-.body-container{
-    background-color: #383838;
+    background-color: var(--bg-card);
     border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+    border: 1px solid var(--border-dark);
 }
 
 .body-container p{
@@ -38,24 +63,35 @@ body{
     line-height: 20px;
     letter-spacing: 0.3px;
     margin: 20px 0;
+    color: var(--text-muted);
 }
 
 .body-container span{
     font-size: 12px;
+    color: var(--text-muted);
 }
 
 .body-container a{
-    color: #838181;
+    color: var(--text-green);
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;
+    transition: color 0.3s ease;
 }
 
+.body-container a:hover{
+    color: var(--green-light);
+    text-decoration: underline;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
 .body-container button{
-    background-color:#499638;
-    color: #000000;
+    background-color: var(--green-primary);
+    color: var(--text-dark);
     font-size: 12px;
-    padding: 10px 45px;
+    padding: 12px 45px;
     border: 1px solid transparent;
     border-radius: 8px;
     font-weight: 600;
@@ -63,15 +99,35 @@ body{
     text-transform: uppercase;
     margin-top: 10px;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.body-container button:hover{
+    background-color: var(--green-light);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--green-glow);
+}
+
+.body-container button:active{
+    transform: translateY(0);
 }
 
 .body-container button.hidden{
     background-color: transparent;
-    border-color: #0a0a0a;
+    border-color: black;
+    color: black;
 }
 
+.body-container button.hidden:hover{
+    background-color: rgba(55, 179, 27, 0.1);
+   
+}
+
+/* =========================================
+   FORMS
+========================================= */
 .body-container form{
-    background-color: #383838;
+    background-color: var(--bg-card);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,16 +137,30 @@ body{
 }
 
 .body-container input{
-    background-color: #ffffff;
-    border: none;
+    background-color: var(--bg-input);
+    border: 2px solid var(--border-dark);
     margin: 8px 0;
-    padding: 10px 15px;
+    padding: 12px 15px;
     font-size: 13px;
     border-radius: 8px;
     width: 100%;
     outline: none;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
 }
 
+.body-container input:focus{
+    border-color: var(--green-primary);
+    box-shadow: 0 0 10px var(--green-glow);
+}
+
+.body-container input::placeholder{
+    color: var(--text-muted);
+}
+
+/* =========================================
+   FORM CONTAINERS
+========================================= */
 .form-container{
     position: absolute;
     top: 0;
@@ -102,7 +172,7 @@ body{
     left: 0;
     width: 50%;
     z-index: 2;
-    color: #41ba47;
+    color: var(--text-green);
 }
 
 .body-container.active .sign-in{
@@ -114,7 +184,7 @@ body{
     width: 50%;
     opacity: 0;
     z-index: 1;
-     color: #41ba47;
+    color: var(--text-green);
 }
 
 .body-container.active .sign-up{
@@ -135,13 +205,16 @@ body{
     }
 }
 
+/* =========================================
+   SOCIAL ICONS
+========================================= */
 .social-icons{
     margin: 20px 0;
 }
 
 .social-icons a{
-    border: 1px solid #ccc;
-    background-color: #ccc;
+    border: 1px solid var(--border-light);
+    background-color: var(--bg-input);
     border-radius: 20%;
     display: inline-flex;
     justify-content: center;
@@ -149,9 +222,22 @@ body{
     margin: 0 3px;
     width: 40px;
     height: 40px;
+    transition: all 0.3s ease;
 }
 
+.social-icons a:hover{
+    background-color: var(--green-primary);
+    border-color: var(--green-primary);
+    transform: translateY(-2px);
+}
 
+.social-icons a i{
+    color: var(--text-dark);
+}
+
+/* =========================================
+   TOGGLE CONTAINER
+========================================= */
 .toggle-container{
     position: absolute;
     top: 0;
@@ -170,10 +256,9 @@ body{
 }
 
 .toggle{
-    background-color: #499638;
+    background: linear-gradient(to right, var(--green-dark), var(--green-primary));
     height: 100%;
-    background: linear-gradient(to right, #0a7210, #6bdd4f); /* deep blue to light blue */;
-    color: #000000;
+    color: var(--text-dark);
     position: relative;
     left: -100%;
     height: 100%;
@@ -202,7 +287,7 @@ body{
 }
 
 .toggle-left{
-    transform: translateX(-100%);
+    transform: translateX(-200%);
 }
 
 .body-container.active .toggle-left{
@@ -218,142 +303,184 @@ body{
     transform: translateX(200%);
 }
 
-@media (max-width: 768px) {
+.toggle-panel h1{
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
 
-    /* allow scrolling instead of fixed viewport (added) */
+.toggle-panel p{
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 768px) {
     body {
-        height: auto;                 /* added */
-        padding: 20px 0;              /* added */
+        height: auto;
+        padding: 20px 0;
+        background: var(--bg-dark);
     }
 
-    /* stack children and bring toggle container to the top (added) */
     .body-container {
-        display: flex;                /* added */
-        flex-direction: column-reverse; /* added – last child (toggle) appears on top */
-        align-items: stretch;         /* added */
-        width: 100%;                  /* added */
-        max-width: 480px;             /* added */
-        min-height: auto;             /* added */
-        border-radius: 20px;          /* added */
-        padding: 0;                   /* added */
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: stretch;
+        width: 100%;
+        max-width: 480px;
+        min-height: auto;
+        border-radius: 20px;
+        padding: 0;
+        margin: 20px;
     }
 
     .body-container form {
-        padding: 20px;                /* added */
-        height: auto;                 /* added */
+        padding: 30px 25px;
+        height: auto;
     }
 
-    /* turn off absolute layout and transitions for forms (added) */
     .form-container {
-        position: static;             /* added */
-        width: 100%;                  /* added */
-        height: auto;                 /* added */
-        transition: none !important;  /* added */
+        position: static;
+        width: 100%;
+        height: auto;
+        transition: none !important;
     }
 
-    /* no sliding / transforms on mobile (added) */
     .sign-in,
     .sign-up {
-        width: 100%;                  /* added */
-        left: 0;                      /* added */
-        transform: none !important;   /* added */
+        width: 100%;
+        left: 0;
+        transform: none !important;
     }
 
-    /* show sign-in by default, hide sign-up (added) */
     .sign-in {
-        display: block;               /* added */
+        display: block;
     }
 
     .sign-up {
-        display: none;                /* added */
-        opacity: 1;                   /* added – just in case */
+        display: none;
+        opacity: 1;
     }
 
-    /* when .active, show sign-up and hide sign-in (no animation) (added) */
     .body-container.active .sign-in {
-        display: none;                /* added */
+        display: none;
     }
 
     .body-container.active .sign-up {
-        display: block;               /* added */
-        animation: none;              /* added */
+        display: block;
+        animation: none;
     }
 
-    /* toggle container becomes full-width bar on top (added) */
     .toggle-container {
-        position: static;             /* added */
-        width: 100%;                  /* added */
-        height: auto;                 /* added */
-        border-radius: 20px 20px 0 0; /* added */
-        overflow: visible;            /* added */
-        transform: none !important;   /* added */
-        transition: none !important;  /* added */
-        z-index: 1;                   /* added */
+        position: static;
+        width: 100%;
+        height: auto;
+        border-radius: 20px 20px 0 0;
+        overflow: visible;
+        transform: none !important;
+        transition: none !important;
+        z-index: 1;
     }
 
     .toggle {
-        width: 100%;                  /* added */
-        left: 0;                      /* added */
-        transform: none !important;   /* added */
-        height: 100%;                 /* added */
-        transition: none !important;  /* added */
-        border-radius: 20px 20px 0 0; /* added */
+        width: 100%;
+        left: 0;
+        transform: none !important;
+        height: 100%;
+        transition: none !important;
+        border-radius: 20px 20px 0 0;
+        padding: 25px 20px;
     }
 
     .toggle-panel {
-        position: static;             /* added */
-        width: 100%;                  /* added */
-        height: auto;                 /* added */
-        padding: 20px;                /* added */
-        transform: none !important;   /* added */
-        text-align: center;           /* added */
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        transform: none !important;
+        text-align: center;
     }
 
-    /* show only one toggle message at a time (added) */
     .toggle-left,
     .toggle-right {
-        display: none;                /* added */
+        display: none;
     }
 
-    /* default (sign-in view): show right panel text (added) */
     .toggle-right {
-        display: flex;                /* added */
+        display: flex;
     }
 
-    /* active (sign-up view): show left panel text instead (added) */
     .body-container.active .toggle-right {
-        display: none;                /* added */
+        display: none;
     }
 
     .body-container.active .toggle-left {
-        display: flex;                /* added */
+        display: flex;
     }
 
-    /* nicer spacing on small screens (added) */
     .social-icons {
-        display: flex;                /* added */
-        justify-content: center;      /* added */
+        display: flex;
+        justify-content: center;
+        gap: 10px;
     }
 
     .body-container input {
-        font-size: 14px;              /* added */
-        padding: 12px 16px;           /* added */
+        font-size: 14px;
+        padding: 12px 16px;
     }
 
     .body-container p {
-        text-align: center;           /* added */
+        text-align: center;
+    }
+
+    .body-container button {
+        width: 100%;
+        padding: 14px;
     }
 }
 
 @media (max-width: 480px) {
-
-    /* edge-to-edge on very small phones (added) */
     .body-container {
-        max-width: 100%;              /* added */
-        border-radius: 0;             /* added */
+        max-width: 100%;
+        border-radius: 0;
+        margin: 0;
+        box-shadow: none;
+        border: none;
     }
 
-    .body-container button {
-        width: 100%;                  /* added */
+    .body-container form {
+        padding: 25px 20px;
     }
+
+    .toggle {
+        padding: 20px 15px;
+    }
+
+    .social-icons a {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Success/Error Messages */
+.message {
+    padding: 12px;
+    border-radius: 8px;
+    margin: 10px 0;
+    text-align: center;
+    font-weight: 600;
+}
+
+.message.success {
+    background: rgba(55, 179, 27, 0.1);
+    color: var(--text-green);
+    border: 1px solid var(--green-primary);
+}
+
+.message.error {
+    background: rgba(255, 77, 79, 0.1);
+    color: #ff4d4f;
+    border: 1px solid #ff4d4f;
 }

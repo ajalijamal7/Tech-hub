@@ -81,7 +81,7 @@ const USERS_KEY = "users";
 
     if (user) {
       alert("Login successful! Welcome " + user.name);
-      // here you can redirect or show another page/section
+      sessionStorage.setItem("currentUser",JSON.stringify(user))
     } else {
       alert("Incorrect email or password, or user not found.");
     }

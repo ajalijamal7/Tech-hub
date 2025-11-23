@@ -2,10 +2,10 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   let hamburger = document.getElementById("hamburger");
-  let navDesc   = document.getElementById('navLinks');    // links container
+  let navDesc = document.getElementById('navLinks');    // links container
   if (hamburger) {
     hamburger.addEventListener("click", function () {
-       navDesc.classList.toggle('open');
+      navDesc.classList.toggle('open');
     });
   }
 });
@@ -671,100 +671,100 @@ let PCParts = [
     quantity: 20,
     desc: "Rechargeable battery pack with USB-C cable for Xbox controllers.",
     image: "img/Xbox Rechargeable Battery Kit.png"
-    
+
   },
 
   // ==================== Headsets / Gaming Headphones ====================
-{
-  name: "HyperX Cloud II",
-  category: "Accessory",
-  brand: "HyperX",
-  price: 80,
-  quantity: 25,
-  desc: "Wired over-ear gaming headset with 53mm drivers, virtual 7.1 surround sound and multi-platform compatibility (PC, PS5, Xbox, Switch).",  
-  image: "img/HyperX Cloud II.png"
-},
-{
-  name: "HyperX Cloud II Wireless",
-  category: "Accessory",
-  brand: "HyperX",
-  price: 120,
-  quantity: 20,
-  desc: "Wireless gaming headset (2.4GHz) from HyperX offering the same comfort as Cloud II with added freedom and long battery life.",  
-  image: "img/HyperX Cloud II Wireless.png"
-},
-{
-  name: "SteelSeries Arctis Pro Wireless",
-  category: "Accessory",
-  brand: "SteelSeries",
-  price: 349,
-  quantity: 8,
-  desc: "High-end hi-res capable wireless gaming headset with dual-wireless (2.4GHz + Bluetooth), swappable batteries and premium build.",  
-  image: "img/SteelSeries Arctis Pro Wireless.png"
-},
-{
-  name: "Logitech G733 Lightspeed Wireless",
-  category: "Accessory",
-  brand: "Logitech",
-  price: 150,
-  quantity: 12,
-  desc: "Lightweight wireless gaming headset with RGB lighting, Bluetooth + USB dongle and good battery life — cross-platform compatible.",  
-  image: "img/Logitech G733 Lightspeed Wireless.png"
-},
-{
-  name: "Razer BlackShark V2 Pro",
-  category: "Accessory",
-  brand: "Razer",
-  price: 200,
-  quantity: 10,
-  desc: "Premium wireless esports headset from Razer with high-quality mic, 50mm drivers and excellent comfort for long sessions.",  
-  image: "img/Razer BlackShark V2 Pro.png"
-},
-{
-  name: "Corsair HS55 Stereo",
-  category: "Accessory",
-  brand: "Corsair",
-  price: 90,
-  quantity: 18,
-  desc: "Budget friendly wired gaming headset offering solid audio and comfort, good value for casual console and PC gamers.",  
-  image: "img/Corsair HS55 Stereo.png"
-},
-{
-  name: "JBL Quantum Over-Ear Headset",
-  category: "Accessory",
-  brand: "JBL",
-  price: 130,
-  quantity: 14,
-  desc: "Gaming headset designed for immersive spatial audio with the JBL QuantumSURROUND and wide platform compatibility.",  
-  image: "img/JBL Quantum Over-Ear Headset.png"
-},
-{
-  name: "Turtle Beach Stealth 600 Gen 3",
-  category: "Accessory",
-  brand: "Turtle Beach",
-  price: 110,
-  quantity: 16,
-  desc: "Wireless headset tailored for consoles with good battery life, comfortable fit and strong game/chat mixing features.",  
-  image: "img/Turtle Beach Stealth 600 Gen 3.png"
-},
-{
-  name: "Sony INZONE H7 Wireless Gaming Headset",
-  category: "Accessory",
-  brand: "Sony",
-  price: 180,
-  quantity: 9,
-  desc: "Wireless headset from Sony’s INZONE line, optimized for PS5 + PC with long battery life and 360 spatial sound features.",  
-  image: "img/Sony INZONE H7 Wireless Gaming Headset.png"
-},
-{
-  name: "Audeze Maxwell Wireless Headset",
-  category: "Accessory",
-  brand: "Audeze",
-  price: 299,
-  quantity: 7,
-  desc: "Audiophile-level wireless gaming headset with planar magnetic drivers and premium materials — for gamers who want top audio fidelity.",  
-  image: "img/Audeze Maxwell Wireless Headset.png"
-}
+  {
+    name: "HyperX Cloud II",
+    category: "Accessory",
+    brand: "HyperX",
+    price: 80,
+    quantity: 25,
+    desc: "Wired over-ear gaming headset with 53mm drivers, virtual 7.1 surround sound and multi-platform compatibility (PC, PS5, Xbox, Switch).",
+    image: "img/HyperX Cloud II.png"
+  },
+  {
+    name: "HyperX Cloud II Wireless",
+    category: "Accessory",
+    brand: "HyperX",
+    price: 120,
+    quantity: 20,
+    desc: "Wireless gaming headset (2.4GHz) from HyperX offering the same comfort as Cloud II with added freedom and long battery life.",
+    image: "img/HyperX Cloud II Wireless.png"
+  },
+  {
+    name: "SteelSeries Arctis Pro Wireless",
+    category: "Accessory",
+    brand: "SteelSeries",
+    price: 349,
+    quantity: 8,
+    desc: "High-end hi-res capable wireless gaming headset with dual-wireless (2.4GHz + Bluetooth), swappable batteries and premium build.",
+    image: "img/SteelSeries Arctis Pro Wireless.png"
+  },
+  {
+    name: "Logitech G733 Lightspeed Wireless",
+    category: "Accessory",
+    brand: "Logitech",
+    price: 150,
+    quantity: 12,
+    desc: "Lightweight wireless gaming headset with RGB lighting, Bluetooth + USB dongle and good battery life — cross-platform compatible.",
+    image: "img/Logitech G733 Lightspeed Wireless.png"
+  },
+  {
+    name: "Razer BlackShark V2 Pro",
+    category: "Accessory",
+    brand: "Razer",
+    price: 200,
+    quantity: 10,
+    desc: "Premium wireless esports headset from Razer with high-quality mic, 50mm drivers and excellent comfort for long sessions.",
+    image: "img/Razer BlackShark V2 Pro.png"
+  },
+  {
+    name: "Corsair HS55 Stereo",
+    category: "Accessory",
+    brand: "Corsair",
+    price: 90,
+    quantity: 18,
+    desc: "Budget friendly wired gaming headset offering solid audio and comfort, good value for casual console and PC gamers.",
+    image: "img/Corsair HS55 Stereo.png"
+  },
+  {
+    name: "JBL Quantum Over-Ear Headset",
+    category: "Accessory",
+    brand: "JBL",
+    price: 130,
+    quantity: 14,
+    desc: "Gaming headset designed for immersive spatial audio with the JBL QuantumSURROUND and wide platform compatibility.",
+    image: "img/JBL Quantum Over-Ear Headset.png"
+  },
+  {
+    name: "Turtle Beach Stealth 600 Gen 3",
+    category: "Accessory",
+    brand: "Turtle Beach",
+    price: 110,
+    quantity: 16,
+    desc: "Wireless headset tailored for consoles with good battery life, comfortable fit and strong game/chat mixing features.",
+    image: "img/Turtle Beach Stealth 600 Gen 3.png"
+  },
+  {
+    name: "Sony INZONE H7 Wireless Gaming Headset",
+    category: "Accessory",
+    brand: "Sony",
+    price: 180,
+    quantity: 9,
+    desc: "Wireless headset from Sony’s INZONE line, optimized for PS5 + PC with long battery life and 360 spatial sound features.",
+    image: "img/Sony INZONE H7 Wireless Gaming Headset.png"
+  },
+  {
+    name: "Audeze Maxwell Wireless Headset",
+    category: "Accessory",
+    brand: "Audeze",
+    price: 299,
+    quantity: 7,
+    desc: "Audiophile-level wireless gaming headset with planar magnetic drivers and premium materials — for gamers who want top audio fidelity.",
+    image: "img/Audeze Maxwell Wireless Headset.png"
+  }
 
 
 
@@ -826,19 +826,36 @@ function displayItems(PCPartsArray) {
 }
 
 function updateCartCount() {
-  const cartCount = document.getElementById("cart-count");
+  let cartCount = document.getElementById("cart-count");
   if (!cartCount) return;
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
+  
+  let cart;
+
+if (currentUser && currentUser.email) {
+    cart = allCarts[currentUser.email] || [];
+} else {
+    cart = []; // guest user
+}
+
+
+  let totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   cartCount.textContent = totalQty;
   cartCount.style.display = totalQty > 0 ? "inline-block" : "none";
 }
 
+let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
+
+
 function addToCartByName(productName) {
+  if (!currentUser) return alert("Please login!")
   const product = PCParts.find(p => p.name === productName);
   if (!product) return;
 
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
+  let cart = allCarts[currentUser.email] || []
 
   const existing = cart.find(item => item.name === product.name);
 
@@ -854,8 +871,8 @@ function addToCartByName(productName) {
   } else {
     cart.push({ ...product, quantity: 1 });
   }
-
-  localStorage.setItem("cart", JSON.stringify(cart));
+  allCarts[currentUser.email] = cart
+  localStorage.setItem("allCarts", JSON.stringify(allCarts));
 
   updateCartCount();
 
@@ -892,13 +909,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const searchBarInput=document.getElementById("search-bar")
-searchBarInput.addEventListener("input",()=>{
-    let searchedItems=PCParts.filter((part=>{
-      if (searchBarInput.value=="") return true
-      if(part.name.toUpperCase().includes(searchBarInput.value.toUpperCase()))
-        return true
-      else return false
-    }))
-    displayItems(searchedItems)
+const searchBarInput = document.getElementById("search-bar")
+searchBarInput.addEventListener("input", () => {
+  let searchedItems = PCParts.filter((part => {
+    if (searchBarInput.value == "") return true
+    if (part.name.toUpperCase().includes(searchBarInput.value.toUpperCase()))
+      return true
+    else return false
+  }))
+  displayItems(searchedItems)
 })

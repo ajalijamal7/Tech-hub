@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Get product data from URL parameters
   let urlParams = new URLSearchParams(window.location.search);
   let productName = urlParams.get('product');
-  
+
   if (!productName) {
     // Redirect back to products if no product specified
     window.location.href = 'products.html';
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Load product data
   let PCParts = JSON.parse(localStorage.getItem("PCParts")) || [];
   let product = PCParts.find(p => p.name === decodeURIComponent(productName));
-  
+
   if (!product) {
     // Product not found, redirect to products
     window.location.href = 'products.html';
@@ -30,13 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Display product details
   displayProductDetails(product);
-  
+
   // Load related products
   displayRelatedProducts(product, PCParts);
-  
+
   // Setup event listeners
   setupEventListeners(product);
-  
+
   // Update cart count
   updateCartCount();
 });
@@ -44,27 +44,27 @@ document.addEventListener("DOMContentLoaded", function () {
 function displayProductDetails(product) {
   // Set page title
   document.title = `${product.name} - TechHub`;
-  
+
   // Set breadcrumb
   let productCategory = document.getElementById('product-category');
   let productNameBreadcrumb = document.getElementById('product-name-breadcrumb');
   productCategory.textContent = product.category;
   productNameBreadcrumb.textContent = product.name;
-  
+
   // Set main product details
   let productImage = document.getElementById('product-image');
   let productTitle = document.getElementById('product-title');
   let productBrand = document.getElementById('product-brand');
   let productCategoryFull = document.getElementById('product-category-full');
   let productPrice = document.getElementById('product-price');
-  
+
   productImage.src = product.image;
   productImage.alt = product.name;
   productTitle.textContent = product.name;
   productBrand.textContent = product.brand;
   productCategoryFull.textContent = product.category;
   productPrice.textContent = `$${product.price}`;
-  
+
   // Set stock information
   let stockElement = document.getElementById('product-stock');
   stockElement.textContent = `${product.quantity} in stock`;
@@ -75,11 +75,11 @@ function displayProductDetails(product) {
     stockElement.classList.add('out');
     stockElement.textContent = 'Out of stock';
   }
-  
+
   // Set description
   let productDescription = document.getElementById('product-description');
   productDescription.textContent = product.desc;
-  
+
   // Generate feature list from description
   generateFeatureList(product.desc);
 }
@@ -87,7 +87,7 @@ function displayProductDetails(product) {
 function generateFeatureList(description) {
   let featureList = document.getElementById('feature-list');
   let sentences = description.split('. ').filter(sentence => sentence.trim().length > 0);
-  
+
   featureList.innerHTML = '';
   sentences.forEach(sentence => {
     if (sentence.trim()) {
@@ -100,18 +100,18 @@ function generateFeatureList(description) {
 
 function displayRelatedProducts(currentProduct, allProducts) {
   let relatedProductsGrid = document.getElementById('related-products');
-  
+
   // Find related products (same category, different product)
-  let relatedProducts = allProducts.filter(product => 
-    product.category === currentProduct.category && 
+  let relatedProducts = allProducts.filter(product =>
+    product.category === currentProduct.category &&
     product.name !== currentProduct.name
   ).slice(0, 4); // Show max 4 related products
-  
+
   if (relatedProducts.length === 0) {
     relatedProductsGrid.innerHTML = '<p>No related products found.</p>';
     return;
   }
-  
+
   let relatedProductsHTML = relatedProducts.map(product => `
     <a href="product.html?product=${encodeURIComponent(product.name)}" class="related-product-card">
       <img src="${product.image}" alt="${product.name}" />
@@ -119,7 +119,7 @@ function displayRelatedProducts(currentProduct, allProducts) {
       <p class="price">$${product.price}</p>
     </a>
   `).join('');
-  
+
   relatedProductsGrid.innerHTML = relatedProductsHTML;
 }
 
@@ -128,28 +128,28 @@ function setupEventListeners(product) {
   let quantityInput = document.getElementById('quantity');
   let decreaseBtn = document.getElementById('decrease-qty');
   let increaseBtn = document.getElementById('increase-qty');
-  
+
   decreaseBtn.addEventListener('click', () => {
     let currentValue = parseInt(quantityInput.value);
     if (currentValue > 1) {
       quantityInput.value = currentValue - 1;
     }
   });
-  
+
   increaseBtn.addEventListener('click', () => {
     let currentValue = parseInt(quantityInput.value);
     if (currentValue < Math.min(10, product.quantity)) {
       quantityInput.value = currentValue + 1;
     }
   });
-  
+
   // Add to cart button
   let addToCartBtn = document.getElementById('add-to-cart-detail');
   addToCartBtn.addEventListener('click', () => {
     let quantity = parseInt(quantityInput.value);
     addToCart(product, quantity);
   });
-  
+
   // Buy now button
   let buyNowBtn = document.getElementById('buy-now');
   buyNowBtn.addEventListener('click', () => {
@@ -161,16 +161,17 @@ function setupEventListeners(product) {
 }
 
 function addToCart(product, quantity) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  
+  let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
+  let cart = allCarts[currentUser.email] || []
+
   let existingItem = cart.find(item => item.name === product.name);
   let currentQtyInCart = existingItem ? existingItem.quantity : 0;
-  
+
   if (currentQtyInCart + quantity > product.quantity) {
     alert(`Sorry, only ${product.quantity} units of "${product.name}" are available. You already have ${currentQtyInCart} in your cart.`);
     return false;
   }
-  
+
   if (existingItem) {
     existingItem.quantity += quantity;
   } else {
@@ -179,30 +180,32 @@ function addToCart(product, quantity) {
       quantity: quantity
     });
   }
-  
-  localStorage.setItem("cart", JSON.stringify(cart));
+
+  allCarts[currentUser.email] = cart
+  localStorage.setItem("allCarts", JSON.stringify(allCarts));
   updateCartCount();
-  
+
   // Visual feedback
   let addToCartBtn = document.getElementById('add-to-cart-detail');
   addToCartBtn.classList.add('added');
   addToCartBtn.textContent = '✓ Added to Cart';
-  
+
   setTimeout(() => {
     addToCartBtn.classList.remove('added');
     addToCartBtn.textContent = 'Add to Cart';
   }, 2000);
-  
+
   return true;
 }
 
 function updateCartCount() {
   let cartCount = document.getElementById("cart-count");
   if (!cartCount) return;
-  
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
+  let cart = allCarts[currentUser.email] || []
   let totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
-  
+
   cartCount.textContent = totalQty;
   cartCount.style.display = totalQty > 0 ? "inline-block" : "none";
 }

@@ -6,12 +6,12 @@ section{
 }
 
 .about-intro {
-  background: #e0f3eb;
+  background: #252525;
   padding: 50px 20px;
   border-radius: 10px;
   margin-top: 40px;
   text-align: center;
-  color: #166405;
+  color: #10b981;
 }
 
 .about-intro h2 {
@@ -35,12 +35,12 @@ section{
 
 .mission,
 .vision {
-  background: #e0f3eb;
+  background: #252525;
   padding: 30px 25px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   flex: 1 1 45%;
-  color: #166405;
+  color: #10b981;
   transition: transform 0.3s ease;
   max-width: 450px;
 }
@@ -63,11 +63,11 @@ section{
 }
 
 .contact {
-  background: #e0f3eb;
+  background: #252525;
   padding: 30px 25px;
   border-radius: 10px;
   margin-bottom: 60px;
-  color: #166405;
+ color: #10b981;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
