@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../CSS/header.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../JS/login.js" defer></script>
+  <script src="../JS/cartCount.js"></script>
 </head>
 
 <body>
@@ -18,7 +19,7 @@
   <header>
     <div class="container">
       <div class="logo-wrap">
-      <img src="../HTML/Icons/TechHub_Logo.png">
+        <img src="../HTML/Icons/TechHub_Logo.png">
       </div>
       <nav class="navbar">
         <ul class="nav-links" id="navLinks">
@@ -26,7 +27,7 @@
           <li><a href="products.html">Products</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="checkout.html">Checkout</a></li>
+          <li><a href="checkout.html">Checkout<span id="cart-count" class="cart-count-badge"></span> </a></li>
           <li><a href="login.html" class="active">Login</a></li>
         </ul>
         <div class="hamburger" id="hamburger">
@@ -87,7 +88,7 @@
       </div>
     </div>
   </div>
-<footer>
+  <footer>
     <div>
       <p>&copy; 2025 Parts Pulse. All rights reserved.</p>
     </div>
