@@ -7,7 +7,7 @@ $(function () {
   });
 });
 
-$(document).ready(function () {
+$(function () {
   let $container = $("#body-container");
 
   $("#register").on("click", function () {
