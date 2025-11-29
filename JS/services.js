@@ -1,5 +1,17 @@
 $(function () {
+document.addEventListener("DOMContentLoaded", function () {
+  // Hamburger menu functionality - jQuery version
+  const $hamburger = $("#hamburger");
+  const $navLinks = $("#navLinks");
+  
+  if ($hamburger.length && $navLinks.length) {
+    $hamburger.on("click", function() {
+      $navLinks.toggleClass("open");
+    });
+  }
 
+  // Rest of your vanilla JS code...
+});
     let PCParts = JSON.parse(localStorage.getItem("PCParts"))
     let CPUS = PCParts.filter(part => part.category == "CPU")
     let GPUS = PCParts.filter(part => part.category == "GPU")

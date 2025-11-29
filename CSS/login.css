@@ -36,8 +36,6 @@
     /* light borders */
     --border-dark: #444444;
     /* dark borders */
-    --cart-red: #e63946;
-    /* cart count badge */
 }
 
 /* =========================================
@@ -50,11 +48,14 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+
 body {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+    flex-grow: 1;
     height: 100vh;
     background: var(--bg-dark);
     color: var(--text-light);
@@ -211,22 +212,6 @@ body {
     animation: move 0.6s;
 }
 
-.cart-count-badge {
-    background-color: #e63946;
-    color: #ffffff;
-    font-size: 0.75rem;
-    font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 50%;
-    margin-left: 6px;
-    vertical-align: middle;
-    min-width: 18px;
-    text-align: center;
-    display: inline-block;
-    line-height: 1;
-    box-shadow: 0 2px 8px rgba(230, 57, 70, 0.3);
-}
-
 @keyframes move {
 
     0%,
@@ -357,7 +342,6 @@ body {
 @media (max-width: 768px) {
     body {
         height: auto;
-        padding: 20px 0;
         background: var(--bg-dark);
     }
 
@@ -501,6 +485,7 @@ body {
     }
 }
 
+
 /* Success/Error Messages */
 .message {
     padding: 12px;
@@ -520,4 +505,80 @@ body {
     background: rgba(255, 77, 79, 0.1);
     color: #ff4d4f;
     border: 1px solid #ff4d4f;
+}
+
+/* Logout Button */
+.logout-btn {
+    background-color: #e74c3c;
+    margin-top: 20px;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Dashboard Styles */
+.dashboard {
+    text-align: center;
+    padding: 20px;
+}
+
+.dashboard h2 {
+    color: #512da8;
+    margin-bottom: 15px;
+}
+
+.dashboard p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Hidden state */
+.hidden {
+    display: none !important;
+}
+
+/* User logged in state */
+.user-logged-in .form-container {
+    display: none;
+}
+
+.user-logged-in .toggle-container {
+    width: 100%;
+    left: 0;
+}
+
+.user-logged-in .toggle {
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+}
+
+.user-logged-in .toggle-panel {
+    width: 100%;
+}
+
+.back-btn {
+    background-color: #95a5a6;
+    margin-top: 10px;
+}
+
+.back-btn:hover {
+    background-color: #7f8c8d;
+}
+
+.cart-count-badge {
+    background-color: #e63946;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    margin-left: 6px;
+    vertical-align: middle;
+    min-width: 18px;
+    text-align: center;
+    display: inline-block;
+    line-height: 1;
+    box-shadow: 0 2px 8px rgba(230, 57, 70, 0.3);
 }

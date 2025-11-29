@@ -58,7 +58,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   min-height: 400px;
-  background: var(--bg-dark);
+
   color: var(--text-light);
 }
 
@@ -388,7 +388,7 @@
 }
 
 .cart-count-badge {
-  background-color: var(--cart-red);
+  background-color: #e63946;
   color: #ffffff;
   font-size: 0.75rem;
   font-weight: bold;
@@ -452,6 +452,13 @@
   .checkout-section {
     padding: 20px 25px;
   }
+
+
+  .delete-btn img {
+    width: 45px;
+    height: auto;
+    margin-left: 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -486,6 +493,12 @@
   .place-order-btn {
     padding: 14px;
     font-size: 1.1rem;
+  }
+
+  .delete-btn img {
+    width: 45px;
+    height: auto;
+    margin-left: 20px;
   }
 }
 

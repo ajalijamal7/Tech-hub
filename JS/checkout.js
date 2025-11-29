@@ -14,10 +14,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.getElementById("checkout-form").addEventListener("submit", function (e) {
   e.preventDefault();
+  let allCarts = JSON.parse(localStorage.getItem("allCarts"))
   if (!sessionStorage.getItem("currentUser")) {
     document.getElementById("loginModal").style.display = "flex";
   } else {
-    alert("Order placed!");
+    if (allCarts[currentUser.email]) {
+      allCarts[currentUser.email] = []
+      localStorage.setItem("allCarts",JSON.stringify(allCarts))
+      renderCart()
+      return alert("Order Placed!")
+    }
+    else {
+      return alert("Your Cart is empty!")
+    }
   }
 });
 
@@ -25,14 +34,21 @@ function closeModal() {
   document.getElementById("loginModal").style.display = "none";
 }
 
-// Load PCParts from localStorage (make sure you store it there on your products page)
 const PCParts = JSON.parse(localStorage.getItem("PCParts")) || [];
 
-// Cache cart container
 const cartSection = document.querySelector(".cart-section");
 let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
 
 function renderCart() {
+
+
+  if (!currentUser || !currentUser.email) {
+    cartSection.innerHTML = "<h2>Your Cart</h2><p>Please log in to view your cart.</p>";
+    updateSummary(0);
+    updateCartCount();
+    return;
+  }
+
   let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
   let cart = allCarts[currentUser.email] || []
   cartSection.innerHTML = "<h2>Your Cart</h2>";
@@ -64,7 +80,6 @@ function renderCart() {
     img.src = product.image;
     img.alt = product.name;
 
-    // Quantity control container
     let controlsDiv = document.createElement("div");
     controlsDiv.classList.add("quantity-control");
 
@@ -72,14 +87,12 @@ function renderCart() {
     qtySpan.textContent = product.quantity;
 
     if (product.quantity === 1) {
-      // Plus button (top)
       const plusBtn = document.createElement("button");
       plusBtn.classList.add("quantity-btn");
       plusBtn.title = "Increase quantity";
       plusBtn.textContent = "+";
       plusBtn.onclick = () => changeQuantity(index, +1);
 
-      // Trash button (bottom)
       const deleteBtn = document.createElement("button");
       deleteBtn.classList.add("delete-btn");
       deleteBtn.title = "Delete item";
@@ -91,14 +104,12 @@ function renderCart() {
       controlsDiv.appendChild(deleteBtn);
 
     } else {
-      // Plus button (top)
       const plusBtn = document.createElement("button");
       plusBtn.classList.add("quantity-btn");
       plusBtn.title = "Increase quantity";
       plusBtn.textContent = "+";
       plusBtn.onclick = () => changeQuantity(index, +1);
 
-      // Minus button (bottom)
       const minusBtn = document.createElement("button");
       minusBtn.classList.add("quantity-btn");
       minusBtn.title = "Decrease quantity";
@@ -143,7 +154,7 @@ function updateCartCount() {
   if (currentUser && currentUser.email) {
     cart = allCarts[currentUser.email] || [];
   } else {
-    cart = []; // guest user
+    cart = [];
   }
 
 

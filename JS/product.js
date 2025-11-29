@@ -154,38 +154,34 @@ function setupEventListeners(product) {
   let buyNowBtn = document.getElementById('buy-now');
   buyNowBtn.addEventListener('click', () => {
     let quantity = parseInt(quantityInput.value);
-    if (addToCart(product, quantity)) {
-      window.location.href = 'checkout.html';
-    }
+    addToCart(product, quantity)
+    window.location.href = '../HTML/checkout.html';
   });
 }
 
 function addToCart(product, quantity) {
+  let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
+  if (!currentUser) return alert("Please login!")
+  console.log(currentUser)
+
   let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
   let cart = allCarts[currentUser.email] || []
+  const existing = cart.find(item => item.name === product.name);
 
-  let existingItem = cart.find(item => item.name === product.name);
-  let currentQtyInCart = existingItem ? existingItem.quantity : 0;
+  const currentQtyInCart = existing ? existing.quantity : 0;
+
 
   if (currentQtyInCart + quantity > product.quantity) {
-    alert(`Sorry, only ${product.quantity} units of "${product.name}" are available. You already have ${currentQtyInCart} in your cart.`);
-    return false;
+    return alert(`Sorry, only ${product.quantity} units of "${product.name}" are available.`);
   }
 
-  if (existingItem) {
-    existingItem.quantity += quantity;
+  if (existing) {
+    existing.quantity += quantity;
   } else {
-    cart.push({
-      ...product,
-      quantity: quantity
-    });
+    cart.push({ ...product, quantity: quantity });
   }
-
   allCarts[currentUser.email] = cart
   localStorage.setItem("allCarts", JSON.stringify(allCarts));
-  updateCartCount();
-
-  // Visual feedback
   let addToCartBtn = document.getElementById('add-to-cart-detail');
   addToCartBtn.classList.add('added');
   addToCartBtn.textContent = '✓ Added to Cart';
@@ -195,15 +191,31 @@ function addToCart(product, quantity) {
     addToCartBtn.textContent = 'Add to Cart';
   }, 2000);
 
-  return true;
+  updateCartCount();
+
+  alert(`${quantity} ${product.name} added to cart`);
 }
 
+
+
 function updateCartCount() {
+  let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
+
   let cartCount = document.getElementById("cart-count");
   if (!cartCount) return;
 
   let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
-  let cart = allCarts[currentUser.email] || []
+
+  let cart;
+
+  if (currentUser && currentUser.email) {
+    cart = allCarts[currentUser.email] || [];
+  } else {
+    cart = []; // guest user
+  }
+
+
+
   let totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   cartCount.textContent = totalQty;
