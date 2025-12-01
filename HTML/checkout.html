@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Checkout - TechHub</title>
   <link rel="stylesheet" href="../CSS/checkout.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
   <script src="../JS/checkout.js" defer></script>
 </head>
+
 <body>
 
   <header>
     <div class="container">
-       <div class="logo-wrap">
-      <img src="../HTML/Icons/TechHub_Logo.png">
+      <div class="logo-wrap">
+        <img src="../HTML/Icons/TechHub_Logo.png">
       </div>
       <nav class="navbar">
         <ul class="nav-links" id="navLinks">
-          <li><a href="index.html"  >Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="products.html">Products</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="checkout.html"class="active">Checkout</a></li>
+          <li><a href="checkout.html" class="active">Checkout <span id="cart-count" class="cart-count-badge"></span></a></li>
           <li><a href="login.html">Login</a></li>
         </ul>
-         <!-- Hamburger menu for mobile view (expandable) -->
-        <div class="hamburger" id="hamburger"> 
+        <!-- Hamburger menu for mobile view (expandable) -->
+        <div class="hamburger" id="hamburger">
           ☰
         </div>
+
+
 
       </nav>
     </div>
@@ -35,64 +39,64 @@
 
 
 
-<div class="body-container">
-  <div class="cart-section">
-    <h2>Your Cart</h2>
-   
+  <div class="body-container">
+    <div class="cart-section">
+      <h2>Your Cart</h2>
+
     </div>
-  <div class="checkout-section">
-    <h2>Checkout</h2>
-    <form id="checkout-form">
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" required />
-      </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" required />
-      </div>
-      <div class="form-group">
-        <label>Delivery Address</label>
-        <textarea rows="3" required></textarea>
-      </div>
-
-      <div class="summary">
-
-        
-        <div class="summary-line">
-          <span>Subtotal</span>
-          <span>$29.99</span>
+    <div class="checkout-section">
+      <h2>Checkout</h2>
+      <form id="checkout-form">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" required />
         </div>
-        <div class="summary-line">
-          <span>Delivery</span>
-          <span>$5.00</span>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" required />
         </div>
-        <div class="summary-line total">
-          <span>Total</span>
-          <span>$34.99</span>
+        <div class="form-group">
+          <label>Delivery Address</label>
+          <textarea rows="3" required></textarea>
         </div>
-      </div>
 
-      <button type="submit" class="place-order-btn">Place Order</button>
-    </form>
-  </div>
-</div>
+        <div class="summary">
 
+
+          <div class="summary-line">
+            <span>Subtotal</span>
+            <span>$29.99</span>
+          </div>
+          <div class="summary-line">
+            <span>Delivery</span>
+            <span>$5.00</span>
+          </div>
+          <div class="summary-line total">
+            <span>Total</span>
+            <span>$34.99</span>
+          </div>
+        </div>
+
+        <button type="submit" class="place-order-btn">Place Order</button>
+      </form>
+    </div>
   </div>
 
-<div class="modal" id="loginModal">
-  <div class="modal-content">
-    <p>You must be logged in to place an order.</p>
-    <button onclick="closeModal()">OK</button>
   </div>
-</div>
 
-<footer>
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <p>You must be logged in to place an order.</p>
+      <button onclick="closeModal()">OK</button>
+    </div>
+  </div>
+
+  <footer>
     <div class="container">
       <p>&copy; 2025 TechHub. All rights reserved.</p>
     </div>
   </footer>
-  
+
 </body>
 
 </html>

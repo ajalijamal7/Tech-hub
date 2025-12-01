@@ -1,11 +1,56 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
+  // Hamburger menu functionality
   let hamburger = document.getElementById("hamburger");
-  let navDesc = document.getElementById('navLinks');    // links container
+  let navDesc = document.getElementById('navLinks');
   if (hamburger) {
     hamburger.addEventListener("click", function () {
       navDesc.classList.toggle('open');
+    });
+  }
+
+  // Filter toggle functionality - FIXED
+  const filterToggle = document.querySelector('.filter-toggle');
+  const filters = document.querySelector('.filters');
+  
+  console.log('Filter toggle element:', filterToggle); // Debug log
+  console.log('Filters element:', filters); // Debug log
+  
+  if (filterToggle && filters) {
+    filterToggle.addEventListener('click', function() {
+      console.log('Filter toggle clicked'); // Debug log
+      filters.classList.toggle('active');
+      
+      // Change button text based on state
+      if (filters.classList.contains('active')) {
+        filterToggle.textContent = 'Hide Filters';
+      } else {
+        filterToggle.textContent = 'Show Filters';
+      }
+    });
+  } else {
+    console.error('Filter toggle or filters element not found');
+  }
+
+  // Initialize page
+  displayItems(PCParts);
+  updateCartCount();
+
+  // Add event listeners for filters
+  document.querySelectorAll('input[name="brand"], input[name="category"]').forEach(input => {
+    input.addEventListener("change", applyFilters);
+  });
+
+  // Search functionality
+  const searchBarInput = document.getElementById("search-bar");
+  if (searchBarInput) {
+    searchBarInput.addEventListener("input", () => {
+      let searchedItems = PCParts.filter((part) => {
+        if (searchBarInput.value == "") return true;
+        if (part.name.toUpperCase().includes(searchBarInput.value.toUpperCase()))
+          return true;
+        else return false;
+      });
+      displayItems(searchedItems);
     });
   }
 });
@@ -830,7 +875,16 @@ function updateCartCount() {
   if (!cartCount) return;
 
   let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
-  let cart = allCarts[currentUser.email] || []
+  
+  let cart;
+
+if (currentUser && currentUser.email) {
+    cart = allCarts[currentUser.email] || [];
+} else {
+    cart = []; // guest user
+}
+
+
   let totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   cartCount.textContent = totalQty;

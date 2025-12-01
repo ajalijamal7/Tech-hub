@@ -1,5 +1,17 @@
 $(function () {
+document.addEventListener("DOMContentLoaded", function () {
+  // Hamburger menu functionality - jQuery version
+  const $hamburger = $("#hamburger");
+  const $navLinks = $("#navLinks");
+  
+  if ($hamburger.length && $navLinks.length) {
+    $hamburger.on("click", function() {
+      $navLinks.toggleClass("open");
+    });
+  }
 
+  // Rest of your vanilla JS code...
+});
     let PCParts = JSON.parse(localStorage.getItem("PCParts"))
     let CPUS = PCParts.filter(part => part.category == "CPU")
     let GPUS = PCParts.filter(part => part.category == "GPU")
@@ -27,6 +39,10 @@ $(function () {
         $("#storage").append(` <option value="${Storage.name}">${Storage.name}</option>`)
     })
 
+    let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
+
+    updateCartCount()
+
     $("#btn-order").on("click", () => {
         let pc = []
         let selectedCPU = $("#cpu").val()
@@ -40,25 +56,21 @@ $(function () {
         if (selectedMotherboard) pc.push(selectedMotherboard);
         if (selectedRAM) pc.push(selectedRAM);
         if (selectedStorage) pc.push(selectedStorage);
+        if (!currentUser) return alert("Please login!")
+        else {
 
+            pc.forEach((part) => {
+                addToCartByName(part)
+            })
 
-        pc.forEach((part) => {
-            console.log(part)
-            addToCartByName(part)
-        })
-
-
-
-
-
-
+            alert(`${pc} added to cart`);
+        }
     })
 
 
-    let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
 
     function addToCartByName(productName) {
-        if (!currentUser) return alert("Please login!")
+        if (!currentUser) return;
         const product = PCParts.find(p => p.name === productName);
         if (!product) return;
 
@@ -82,21 +94,30 @@ $(function () {
         allCarts[currentUser.email] = cart
         localStorage.setItem("allCarts", JSON.stringify(allCarts));
 
-        alert(`${product.name} added to cart`);
+
         updateCartCount();
     }
+
 
     function updateCartCount() {
         let cartCount = document.getElementById("cart-count");
         if (!cartCount) return;
 
         let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
-        let cart = allCarts[currentUser.email] || []
+
+        let cart;
+
+        if (currentUser && currentUser.email) {
+            cart = allCarts[currentUser.email] || [];
+        } else {
+            cart = []; // guest user
+        }
+
+
         let totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
 
         cartCount.textContent = totalQty;
         cartCount.style.display = totalQty > 0 ? "inline-block" : "none";
     }
-
 })
 

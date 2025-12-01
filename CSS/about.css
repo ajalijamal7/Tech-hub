@@ -1,8 +1,13 @@
-main{
+*{
+  padding: 0;
+  margin: 0;
+}
+main {
   padding-top: 10px;
 }
-section{
-   padding: 15px;
+
+section {
+  padding: 15px;
 }
 
 .about-intro {
@@ -67,7 +72,7 @@ section{
   padding: 30px 25px;
   border-radius: 10px;
   margin-bottom: 60px;
- color: #10b981;
+  color: #10b981;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -91,6 +96,22 @@ section{
   border-radius: 10px;
 }
 
+.cart-count-badge {
+  background-color: #e63946;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  margin-left: 6px;
+  vertical-align: middle;
+  min-width: 18px;
+  text-align: center;
+  display: inline-block;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(230, 57, 70, 0.3);
+}
+
 
 
 @media (max-width: 768px) {
@@ -104,4 +125,3 @@ section{
     flex: 1 1 100%;
   }
 }
-

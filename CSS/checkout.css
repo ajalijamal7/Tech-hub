@@ -2,27 +2,47 @@
    COLOR VARIABLES - DARK THEME
 ========================================= */
 :root {
-  --green-primary: #10b981;      /* main green */
-  --green-dark: #0b7552;         /* darker green */
-  --green-light: #15e9a2;        /* lighter green */
-  --green-bright: #57fc32;       /* bright green for hover */
-  --green-glow: rgba(55, 179, 27, 0.3); /* green glow */
-  
-  --bg-dark: #1a1a1a;            /* main background */
-  --bg-card: #2e2e2e;            /* card backgrounds */
-  --bg-darker: #484848;          /* darker elements */
-  --bg-input: #3a3a3a;           /* input backgrounds */
-  
-  --text-green: #10b981;         /* green text */
-  --text-light: #e0e0e0;         /* light text */
-  --text-muted: #a0a0a0;         /* muted text */
-  --text-white: #ffffff;         /* white text */
-  
-  --border-green: #10b981;       /* green borders */
-  --border-dark: #444444;        /* dark borders */
-  
-  --error-red: #ff4d4f;          /* error/delete red */
-  --error-dark: #d9363e;         /* darker error */
+  --green-primary: #10b981;
+  /* main green */
+  --green-dark: #0b7552;
+  /* darker green */
+  --green-light: #15e9a2;
+  /* lighter green */
+  --green-bright: #57fc32;
+  /* bright green for hover */
+  --green-glow: rgba(55, 179, 27, 0.3);
+  /* green glow */
+
+  --cart-red: #e63946;
+  /* cart count badge */
+
+  --bg-dark: #1a1a1a;
+  /* main background */
+  --bg-card: #2e2e2e;
+  /* card backgrounds */
+  --bg-darker: #484848;
+  /* darker elements */
+  --bg-input: #3a3a3a;
+  /* input backgrounds */
+
+  --text-green: #10b981;
+  /* green text */
+  --text-light: #e0e0e0;
+  /* light text */
+  --text-muted: #a0a0a0;
+  /* muted text */
+  --text-white: #ffffff;
+  /* white text */
+
+  --border-green: #10b981;
+  /* green borders */
+  --border-dark: #444444;
+  /* dark borders */
+
+  --error-red: #ff4d4f;
+  /* error/delete red */
+  --error-dark: #d9363e;
+  /* darker error */
 }
 
 /* =========================================
@@ -31,14 +51,14 @@
 .body-container {
   display: flex;
   gap: 40px;
-  flex-wrap: nowrap; 
+  flex-wrap: nowrap;
   max-width: 1200px;
   margin: 0 auto 50px;
   padding: 10px 15px;
   justify-content: flex-start;
-  align-items: flex-start; 
+  align-items: flex-start;
   min-height: 400px;
-  background: var(--bg-dark);
+  
   color: var(--text-light);
 }
 
@@ -68,13 +88,13 @@
   padding: 15px 20px;
   margin-bottom: 20px;
   border-radius: 10px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   border: 1px solid var(--border-dark);
 }
 
 .cart-item:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   border-color: var(--border-green);
   transform: translateY(-2px);
 }
@@ -115,6 +135,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   min-width: 36px;
 }
@@ -153,23 +174,27 @@
 }
 
 .delete-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: none;
   border: none;
   color: var(--error-red);
   font-size: 24px;
   cursor: pointer;
   padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: all 0.3s ease;
-  margin-top: 6px;
   border-radius: 4px;
+}
+
+.delete-btn img {
+  width: 50px;
+  height: auto;
+  margin-left: 20px;
 }
 
 .delete-btn:hover {
   color: var(--error-dark);
-  background: rgba(255, 77, 79, 0.1);
   transform: scale(1.1);
 }
 
@@ -178,9 +203,6 @@
   box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.3);
 }
 
-/* =========================================
-   CHECKOUT SECTION
-========================================= */
 .checkout-section {
   width: 100%;
   max-width: 600px;
@@ -188,7 +210,7 @@
   padding: 25px 30px;
   box-sizing: border-box;
   border-radius: 14px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   height: auto;
   border: 1px solid var(--border-dark);
 }
@@ -289,7 +311,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.5s;
 }
 
@@ -313,11 +335,11 @@
 .modal {
   display: none;
   position: fixed;
-  top: 0; 
+  top: 0;
   left: 0;
-  width: 100vw; 
+  width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
   z-index: 9999;
@@ -329,7 +351,7 @@
   padding: 35px 40px;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
   max-width: 400px;
   width: 90%;
   border: 2px solid var(--border-green);
@@ -363,6 +385,22 @@
   background: var(--green-light);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px var(--green-glow);
+}
+
+.cart-count-badge {
+  background-color: #e63946;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  margin-left: 6px;
+  vertical-align: middle;
+  min-width: 18px;
+  text-align: center;
+  display: inline-block;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(230, 57, 70, 0.3);
 }
 
 /* =========================================

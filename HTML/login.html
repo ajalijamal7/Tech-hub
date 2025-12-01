@@ -5,9 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login / Signup - TechHub</title>
-  <link rel="stylesheet" href="../CSS/login.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
+  <link rel="stylesheet" href="../CSS/login.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../JS/cartCount.js"></script>
   <script src="../JS/login.js" defer></script>
 </head>
 
@@ -18,7 +19,7 @@
   <header>
     <div class="container">
       <div class="logo-wrap">
-      <img src="../HTML/Icons/TechHub_Logo.png">
+        <img src="../HTML/Icons/TechHub_Logo.png">
       </div>
       <nav class="navbar">
         <ul class="nav-links" id="navLinks">
@@ -26,7 +27,7 @@
           <li><a href="products.html">Products</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="checkout.html">Checkout</a></li>
+          <li><a href="checkout.html">Checkout <span id="cart-count" class="cart-count-badge"></span></a></li></a></li>
           <li><a href="login.html" class="active">Login</a></li>
         </ul>
         <div class="hamburger" id="hamburger">
@@ -73,21 +74,32 @@
     <div class="toggle-container">
       <div class="toggle">
         <div class="toggle-panel toggle-left">
-          <h1>Welcome !</h1>
+          <h1 id="welcomeMessage">Welcome !</h1>
           <p>Enter your personal details to use all of site features</p>
-          <button class="hidden" id="login">Sign In</button>
+          <button class="" id="login">Sign In</button>
         </div>
         <div class="toggle-panel toggle-right">
-          <h1>Hello, Friend!</h1>
-          <p>
+          <h1 id="welcome_Message"></h1>
+          <p  id="login-logout-message">
             Register with your personal details to use all of site features
           </p>
-          <button class="hidden" id="register">Sign Up</button>
+          <button class="register-btn" id="register">Sign Up</button>
+          <!-- Add this back button that only shows when logged in -->
+          <button id="backToLogin" class="back-btn hidden">Back to Login</button>
         </div>
       </div>
     </div>
+
   </div>
-<footer>
+  <div id="userMenu" class="hidden">
+    <span class="welcome-msg">Welcome, <span id="usernameDisplay"></span></span>
+    <button id="logoutBtn" class="logout-btn">
+      <i class="logout-icon"></i>
+      Logout
+    </button>
+  </div>
+
+  <footer>
     <div>
       <p>&copy; 2025 Parts Pulse. All rights reserved.</p>
     </div>

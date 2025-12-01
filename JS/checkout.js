@@ -1,37 +1,45 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.getElementById("hamburger");
-  let navDesc   = document.getElementById('navLinks');    // links container
+  let navDesc = document.getElementById('navLinks');    // links container
   if (hamburger) {
     hamburger.addEventListener("click", function () {
-       navDesc.classList.toggle('open');
+      navDesc.classList.toggle('open');
     });
   }
+  renderCart()
 });
 
 
 
-  document.getElementById("checkout-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (!sessionStorage.getItem("currentUser")) {
-      document.getElementById("loginModal").style.display = "flex";
-    } else {
-      alert("Order placed!");
-    }
-  });
-
-  function closeModal() {
-    document.getElementById("loginModal").style.display = "none";
+document.getElementById("checkout-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  if (!sessionStorage.getItem("currentUser")) {
+    document.getElementById("loginModal").style.display = "flex";
+  } else {
+    alert("Order placed!");
   }
+});
 
-  // Load PCParts from localStorage (make sure you store it there on your products page)
+function closeModal() {
+  document.getElementById("loginModal").style.display = "none";
+}
+
 const PCParts = JSON.parse(localStorage.getItem("PCParts")) || [];
 
-// Cache cart container
 const cartSection = document.querySelector(".cart-section");
 let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
 
 function renderCart() {
+
+
+  if (!currentUser || !currentUser.email) {
+    cartSection.innerHTML = "<h2>Your Cart</h2><p>Please log in to view your cart.</p>";
+    updateSummary(0);
+    updateCartCount();
+    return;
+  }
+
   let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
   let cart = allCarts[currentUser.email] || []
   cartSection.innerHTML = "<h2>Your Cart</h2>";
@@ -39,8 +47,10 @@ function renderCart() {
   if (cart.length === 0) {
     cartSection.innerHTML += "<p>Your cart is empty.</p>";
     updateSummary(0);
+    updateCartCount()
     return;
   }
+
 
   let subtotal = 0;
 
@@ -61,7 +71,6 @@ function renderCart() {
     img.src = product.image;
     img.alt = product.name;
 
-    // Quantity control container
     let controlsDiv = document.createElement("div");
     controlsDiv.classList.add("quantity-control");
 
@@ -69,18 +78,16 @@ function renderCart() {
     qtySpan.textContent = product.quantity;
 
     if (product.quantity === 1) {
-      // Plus button (top)
       const plusBtn = document.createElement("button");
       plusBtn.classList.add("quantity-btn");
       plusBtn.title = "Increase quantity";
       plusBtn.textContent = "+";
       plusBtn.onclick = () => changeQuantity(index, +1);
 
-      // Trash button (bottom)
       const deleteBtn = document.createElement("button");
       deleteBtn.classList.add("delete-btn");
       deleteBtn.title = "Delete item";
-      deleteBtn.innerHTML = "🗑️";
+      deleteBtn.innerHTML = `<img src="../HTML/img/icons8-delete-30.png"  alt="">`;
       deleteBtn.onclick = () => deleteItem(index);
 
       controlsDiv.appendChild(plusBtn);
@@ -88,14 +95,12 @@ function renderCart() {
       controlsDiv.appendChild(deleteBtn);
 
     } else {
-      // Plus button (top)
       const plusBtn = document.createElement("button");
       plusBtn.classList.add("quantity-btn");
       plusBtn.title = "Increase quantity";
       plusBtn.textContent = "+";
       plusBtn.onclick = () => changeQuantity(index, +1);
 
-      // Minus button (bottom)
       const minusBtn = document.createElement("button");
       minusBtn.classList.add("quantity-btn");
       minusBtn.title = "Decrease quantity";
@@ -115,6 +120,7 @@ function renderCart() {
   });
 
   updateSummary(subtotal);
+  updateCartCount()
 }
 
 function updateSummary(subtotal) {
@@ -126,11 +132,38 @@ function updateSummary(subtotal) {
   document.querySelector(".summary-line.total span:last-child").textContent = `$${total.toFixed(2)}`;
 }
 
+
+
+function updateCartCount() {
+  let cartCount = document.getElementById("cart-count");
+  if (!cartCount) return;
+
+  let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
+
+  let cart;
+
+  if (currentUser && currentUser.email) {
+    cart = allCarts[currentUser.email] || [];
+  } else {
+    cart = [];
+  }
+
+
+
+  let totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  cartCount.textContent = totalQty;
+  cartCount.style.display = totalQty > 0 ? "inline-block" : "none";
+}
+
+
+
 function deleteItem(index) {
+  if (!currentUser || !currentUser.email) return;
   let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
   let cart = allCarts[currentUser.email] || []
   cart.splice(index, 1);
-  allCarts[currentUser]=cart
+  allCarts[currentUser.email] = cart
   localStorage.setItem("allCarts", JSON.stringify(allCarts));
   renderCart();
 }
@@ -156,7 +189,7 @@ function changeQuantity(index, delta) {
 
   product.quantity = newQty;
   cart[index] = product;
-  allCarts[currentUser]=cart  
+  allCarts[currentUser.email] = cart
   localStorage.setItem("allCarts", JSON.stringify(allCarts));
   renderCart();
 }
@@ -166,8 +199,6 @@ function getAvailableStock(productName) {
   return product ? product.quantity : 0;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  renderCart();
-});
+
 
 

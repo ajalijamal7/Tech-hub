@@ -8,7 +8,10 @@
 
   <link rel="stylesheet" href="../CSS/index.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
+  <link rel="stylesheet" href="../CSS/products.css">
   <script src="../JS/hamburger.js"></script>
+  <script src="../JS/cartCount.js"></script>
+
 </head>
 
 <body>
@@ -24,7 +27,7 @@
           <li><a href="products.html">Products</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="checkout.html">Checkout</a></li>
+          <li><a href="checkout.html">Checkout <span id="cart-count" class="cart-count-badge"></span></a></li>
           <li><a href="login.html">Login</a></li>
         </ul>
 
@@ -59,40 +62,29 @@
         <div class="product-grid">
 
           <div class="product-card-container">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+
             <div class="product-card">
               <img src="img/i7-1300K.png" alt="CPU">
               <h3>Intel Core i7-1300k</h3>
-              <p>$299.99</p>
-              <button>Add to Cart</button>
-            </div>
-          </div>
-        
-          <div class="product-card-container">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <div class="product-card">
-              <img src="img/RTX 3070 TI.png" alt="GPU">
-              <h3>NVIDIA RTX 3070 TI</h3>
-              <p>$499.99</p>
+              <p class="home-price">$299.99</p>
               <button>Add to Cart</button>
             </div>
           </div>
 
           <div class="product-card-container">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <div class="product-card">
+              <img src="img/RTX 3070 TI.png" alt="GPU">
+              <h3>NVIDIA RTX 3070 TI</h3>
+              <p class="home-price">$499.99</p>
+              <button>Add to Cart</button>
+            </div>
+          </div>
+
+          <div class="product-card-container">
             <div class="product-card">
               <img src="img/RAM 16 gb.png" alt="RAM">
               <h3>16GB DDR4 RAM</h3>
-              <p>$89.99</p>
+              <p class="home-price">$89.99</p>
               <button>Add to Cart</button>
             </div>
           </div>

@@ -2,43 +2,59 @@
    COLOR VARIABLES - DARK THEME
 ========================================= */
 :root {
-  --green-primary: #10b981;      /* main green */
-  --green-dark: #13855f;         /* darker green */
-  --green-light: #15e09d;        /* lighter green */
-  --green-bright: #0ff1a6;       /* bright green */
-  --green-glow: rgba(55, 179, 27, 0.3);
-  
-  --bg-dark: #1a1a1a;            /* main background */
-  --bg-card: #383838;            /* card background */
-  --bg-darker: #2e2e2e;          /* darker elements */
-  --bg-input: #ffffff;           /* input background */
-  
-  --text-green: #10b981;         /* green text */
-  --text-light: #e0e0e0;         /* light text */
-  --text-muted: #a0a0a0;         /* muted text */
-  --text-dark: #000000;          /* dark text */
-  --text-white: #ffffff;         /* white text */
-  
-  --border-light: #ccc;          /* light borders */
-  --border-dark: #444444;        /* dark borders */
+    --green-primary: #10b981;
+    /* main green */
+    --green-dark: #13855f;
+    /* darker green */
+    --green-light: #15e09d;
+    /* lighter green */
+    --green-bright: #0ff1a6;
+    /* bright green */
+    --green-glow: rgba(55, 179, 27, 0.3);
+
+    --bg-dark: #1a1a1a;
+    /* main background */
+    --bg-card: #383838;
+    /* card background */
+    --bg-darker: #2e2e2e;
+    /* darker elements */
+    --bg-input: #ffffff;
+    /* input background */
+
+    --text-green: #10b981;
+    /* green text */
+    --text-light: #e0e0e0;
+    /* light text */
+    --text-muted: #a0a0a0;
+    /* muted text */
+    --text-dark: #000000;
+    /* dark text */
+    --text-white: #ffffff;
+    /* white text */
+
+    --border-light: #ccc;
+    /* light borders */
+    --border-dark: #444444;
+    /* dark borders */
 }
 
 /* =========================================
    RESET & BASE STYLES
 ========================================= */
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
 
-body{
+
+body {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+   
     background: var(--bg-dark);
     color: var(--text-light);
 }
@@ -58,7 +74,7 @@ body{
     border: 1px solid var(--border-dark);
 }
 
-.body-container p{
+.body-container p {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.3px;
@@ -66,12 +82,12 @@ body{
     color: var(--text-muted);
 }
 
-.body-container span{
+.body-container span {
     font-size: 12px;
     color: var(--text-muted);
 }
 
-.body-container a{
+.body-container a {
     color: var(--text-green);
     font-size: 13px;
     text-decoration: none;
@@ -79,7 +95,7 @@ body{
     transition: color 0.3s ease;
 }
 
-.body-container a:hover{
+.body-container a:hover {
     color: var(--green-light);
     text-decoration: underline;
 }
@@ -87,7 +103,7 @@ body{
 /* =========================================
    BUTTONS
 ========================================= */
-.body-container button{
+.body-container button {
     background-color: var(--green-primary);
     color: var(--text-dark);
     font-size: 12px;
@@ -102,31 +118,31 @@ body{
     transition: all 0.3s ease;
 }
 
-.body-container button:hover{
+.body-container button:hover {
     background-color: var(--green-light);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px var(--green-glow);
 }
 
-.body-container button:active{
+.body-container button:active {
     transform: translateY(0);
 }
 
-.body-container button.hidden{
+.body-container button.hidden {
     background-color: transparent;
     border-color: black;
     color: black;
 }
 
-.body-container button.hidden:hover{
+.body-container button.hidden:hover {
     background-color: rgba(55, 179, 27, 0.1);
-   
+
 }
 
 /* =========================================
    FORMS
 ========================================= */
-.body-container form{
+.body-container form {
     background-color: var(--bg-card);
     display: flex;
     align-items: center;
@@ -136,7 +152,7 @@ body{
     height: 100%;
 }
 
-.body-container input{
+.body-container input {
     background-color: var(--bg-input);
     border: 2px solid var(--border-dark);
     margin: 8px 0;
@@ -149,37 +165,37 @@ body{
     transition: all 0.3s ease;
 }
 
-.body-container input:focus{
+.body-container input:focus {
     border-color: var(--green-primary);
     box-shadow: 0 0 10px var(--green-glow);
 }
 
-.body-container input::placeholder{
+.body-container input::placeholder {
     color: var(--text-muted);
 }
 
 /* =========================================
    FORM CONTAINERS
 ========================================= */
-.form-container{
+.form-container {
     position: absolute;
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
 }
 
-.sign-in{
+.sign-in {
     left: 0;
     width: 50%;
     z-index: 2;
     color: var(--text-green);
 }
 
-.body-container.active .sign-in{
+.body-container.active .sign-in {
     transform: translateX(100%);
 }
 
-.sign-up{
+.sign-up {
     left: 0;
     width: 50%;
     opacity: 0;
@@ -187,19 +203,23 @@ body{
     color: var(--text-green);
 }
 
-.body-container.active .sign-up{
+.body-container.active .sign-up {
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
     animation: move 0.6s;
 }
 
-@keyframes move{
-    0%, 49.99%{
+@keyframes move {
+
+    0%,
+    49.99% {
         opacity: 0;
         z-index: 1;
     }
-    50%, 100%{
+
+    50%,
+    100% {
         opacity: 1;
         z-index: 5;
     }
@@ -208,11 +228,11 @@ body{
 /* =========================================
    SOCIAL ICONS
 ========================================= */
-.social-icons{
+.social-icons {
     margin: 20px 0;
 }
 
-.social-icons a{
+.social-icons a {
     border: 1px solid var(--border-light);
     background-color: var(--bg-input);
     border-radius: 20%;
@@ -225,37 +245,37 @@ body{
     transition: all 0.3s ease;
 }
 
-.social-icons a:hover{
+.social-icons a:hover {
     background-color: var(--green-primary);
     border-color: var(--green-primary);
     transform: translateY(-2px);
 }
 
-.social-icons a i{
+.social-icons a i {
     color: var(--text-dark);
 }
 
 /* =========================================
    TOGGLE CONTAINER
 ========================================= */
-.toggle-container{
+.toggle-container {
     position: absolute;
     top: 0;
     left: 50%;
     width: 50%;
     height: 100%;
-    overflow:hidden;
+    overflow: hidden;
     transition: all 0.6s ease-in-out;
     border-radius: 150px 0 0 100px;
     z-index: 900;
 }
 
-.body-container.active .toggle-container{
+.body-container.active .toggle-container {
     transform: translateX(-100%);
     border-radius: 0 150px 100px 0;
 }
 
-.toggle{
+.toggle {
     background: linear-gradient(to right, var(--green-dark), var(--green-primary));
     height: 100%;
     color: var(--text-dark);
@@ -267,11 +287,11 @@ body{
     transition: all 0.6s ease-in-out;
 }
 
-.body-container.active .toggle{
+.body-container.active .toggle {
     transform: translateX(50%);
 }
 
-.toggle-panel{
+.toggle-panel {
     position: absolute;
     width: 50%;
     height: 100%;
@@ -286,30 +306,30 @@ body{
     transition: all 0.6s ease-in-out;
 }
 
-.toggle-left{
+.toggle-left {
     transform: translateX(-200%);
 }
 
-.body-container.active .toggle-left{
+.body-container.active .toggle-left {
     transform: translateX(0);
 }
 
-.toggle-right{
+.toggle-right {
     right: 0;
     transform: translateX(0);
 }
 
-.body-container.active .toggle-right{
+.body-container.active .toggle-right {
     transform: translateX(200%);
 }
 
-.toggle-panel h1{
+.toggle-panel h1 {
     color: var(--text-dark);
     margin-bottom: 15px;
     font-weight: 700;
 }
 
-.toggle-panel p{
+.toggle-panel p {
     color: var(--text-dark);
     margin-bottom: 20px;
 }
@@ -318,9 +338,10 @@ body{
    RESPONSIVE DESIGN
 ========================================= */
 @media (max-width: 768px) {
+
+    
     body {
         height: auto;
-        padding: 20px 0;
         background: var(--bg-dark);
     }
 
@@ -483,4 +504,80 @@ body{
     background: rgba(255, 77, 79, 0.1);
     color: #ff4d4f;
     border: 1px solid #ff4d4f;
+}
+
+/* Logout Button */
+.logout-btn {
+    background-color: #e74c3c;
+    margin-top: 20px;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Dashboard Styles */
+.dashboard {
+    text-align: center;
+    padding: 20px;
+}
+
+.dashboard h2 {
+    color: #512da8;
+    margin-bottom: 15px;
+}
+
+.dashboard p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Hidden state */
+.hidden {
+    display: none !important;
+}
+
+/* User logged in state */
+.user-logged-in .form-container {
+    display: none;
+}
+
+.user-logged-in .toggle-container {
+    width: 100%;
+    left: 0;
+}
+
+.user-logged-in .toggle {
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+}
+
+.user-logged-in .toggle-panel {
+    width: 100%;
+}
+
+.back-btn {
+    background-color: #95a5a6;
+    margin-top: 10px;
+}
+
+.back-btn:hover {
+    background-color: #7f8c8d;
+}
+
+.cart-count-badge {
+    background-color: #e63946;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    margin-left: 6px;
+    vertical-align: middle;
+    min-width: 18px;
+    text-align: center;
+    display: inline-block;
+    line-height: 1;
+    box-shadow: 0 2px 8px rgba(230, 57, 70, 0.3);
 }

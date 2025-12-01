@@ -2,20 +2,36 @@
    COLOR VARIABLES - DARK THEME
 ========================================= */
 :root {
-  --primary-green: #10b981;         /* Modern emerald green */
-  --green-dark: #059669;            /* Darker green for hover */
-  --green-light: #34d399;           /* Light green for accents */
-  --green-glow: rgba(16, 185, 129, 0.3); /* Green glow effects */
-  --black: #000000;                 /* Primary black */
-  --black-light: #1a1a1a;           /* Lighter black for cards */
-  --black-lighter: #2d2d2d;         /* Even lighter for elements */
-  --black-dark: #0a0a0a;            /* Darker black */
-  --gray-light: #9ca3af;            /* Secondary text */
-  --gray-medium: #d1d5db;           /* Primary text */
-  --gray-dark: #374151;             /* Dark gray */
-  --border-dark: #374151;           /* Border lines */
-  --white: #ffffff;                 /* White text/elements */
-  --card-bg: #1f1f1f;               /* Card background */
+  --primary-green: #10b981;
+  /* Modern emerald green */
+  --green-dark: #059669;
+  /* Darker green for hover */
+  --green-light: #34d399;
+  /* Light green for accents */
+  --green-glow: rgba(16, 185, 129, 0.3);
+  /* Green glow effects */
+  --black: #000000;
+  /* Primary black */
+  --black-light: #1a1a1a;
+  /* Lighter black for cards */
+  --black-lighter: #2d2d2d;
+  /* Even lighter for elements */
+  --black-dark: #0a0a0a;
+  /* Darker black */
+  --gray-light: #9ca3af;
+  /* Secondary text */
+  --gray-medium: #d1d5db;
+  /* Primary text */
+  --gray-dark: #374151;
+  /* Dark gray */
+  --border-dark: #374151;
+  /* Border lines */
+  --white: #ffffff;
+  /* White text/elements */
+  --card-bg: #1f1f1f;
+  /* Card background */
+  --cart-red: #e63946;
+  /* cart count badge */
 }
 
 /* =========================================
@@ -23,7 +39,7 @@
 ========================================= */
 .product-detail-page {
   padding: 2rem 0;
-  background-color: var(--black);
+  background-color: #161616;
   color: var(--gray-medium);
   min-height: 100vh;
 }
@@ -109,7 +125,8 @@
   margin-bottom: 1.5rem;
 }
 
-.brand, .category {
+.brand,
+.category {
   padding: 0.4rem 1rem;
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid var(--primary-green);
@@ -229,7 +246,8 @@
   margin-bottom: 2rem;
 }
 
-.add-to-cart-btn, .buy-now-btn {
+.add-to-cart-btn,
+.buy-now-btn {
   padding: 1.1rem 2rem;
   border: none;
   border-radius: 10px;
@@ -409,8 +427,13 @@
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 .related-product-card img {
@@ -475,11 +498,11 @@
   .price {
     font-size: 1.8rem;
   }
-  
+
   .product-image-section {
     padding: 1.5rem;
   }
-  
+
   .related-products {
     padding: 1.5rem;
   }
@@ -487,9 +510,20 @@
 
 /* Animation for add to cart */
 @keyframes addToCartPulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 var(--green-glow); }
-  50% { transform: scale(1.05); box-shadow: 0 0 0 10px transparent; }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 transparent; }
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--green-glow);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px transparent;
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 transparent;
+  }
 }
 
 .add-to-cart-btn.added {
@@ -505,6 +539,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -523,3 +558,4 @@
   display: none;
   border: 1px solid var(--primary-green);
 }
+
