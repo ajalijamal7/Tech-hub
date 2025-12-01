@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Home - TechHub</title>
 
-  <link rel="stylesheet" href="../CSS/index.css" />
-  <link rel="stylesheet" href="../CSS/header.css" />
-  <link rel="stylesheet" href="../CSS/products.css">
+  <link rel="stylesheet" href="CSS/index.css" />
+  <link rel="stylesheet" href="CSS/header.css" />
+  <link rel="stylesheet" href="CSS/products.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<link rel="icon" type="image/x-icon" href="../HTML/Icons/TechHub_Logo.png">
-  <script src="../JS/cartCount.js"></script>
-  <script src="../JS/home.js"></script> <!-- New home-specific JS -->
+  <link rel="icon" type="image/x-icon" href="HTML/Icons/TechHub_Logo.png">
+  <script src="JS/cartCount.js"></script>
+  <script src="JS/home.js"></script>
 
 </head>
 
@@ -21,19 +21,18 @@
   <header>
     <div class="container">
       <div class="logo-wrap">
-        <img src="../HTML/Icons/TechHub_Logo.png">
+        <img src="HTML/Icons/TechHub_Logo.png">
       </div>
       <nav class="navbar">
         <ul class="nav-links" id="navLinks">
           <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="checkout.html">Checkout <span id="cart-count" class="cart-count-badge"></span></a></li>
-          <li><a href="login.html">Login</a></li>
+          <li><a href="HTML/products.html">Products</a></li>
+          <li><a href="HTML/services.html">Services</a></li>
+          <li><a href="HTML/about.html">About Us</a></li>
+          <li><a href="HTML/checkout.html">Checkout <span id="cart-count" class="cart-count-badge"></span></a></li>
+          <li><a href="HTML/login.html">Login</a></li>
         </ul>
 
-        <!-- Hamburger menu for mobile view (expandable) -->
         <div class="hamburger" id="hamburger">
           ☰
         </div>
@@ -46,7 +45,7 @@
     <div class="container">
       <h2>Build Your Dream PC</h2>
       <p>Top performance parts at unbeatable prices.</p>
-      <a href="products.html" class="btn">
+      <a href="HTML/products.html" class="btn">
         <span></span>
         <span></span>
         <span></span>
@@ -55,13 +54,12 @@
       </a>
     </div>
   </section>
-  
+
   <main>
     <section class="products">
       <div class="container">
         <h2>Featured Products</h2>
         <div class="product-grid" id="featured-products-grid">
-          <!-- Products will be populated by JavaScript -->
         </div>
       </div>
     </section>
@@ -69,11 +67,12 @@
     <section class="about">
       <div class="container">
         <h2>About TechHub</h2>
-        <p>We specialize in high-quality PC components, from processors to graphics cards, all at competitive prices.</p>
+        <p>We specialize in high-quality PC components, from processors to graphics cards, all at competitive prices.
+        </p>
       </div>
     </section>
   </main>
-  
+
   <footer>
     <div class="container">
       <p>&copy; 2025 TechHub. All rights reserved.</p>
