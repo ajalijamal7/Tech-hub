@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Product Details - TechHub</title>
+  <link rel="icon" type="image/x-icon" href="../HTML/Icons/TechHub_Logo.png">
   <link rel="stylesheet" href="../CSS/header.css" />
   <link rel="stylesheet" href="../CSS/product.css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../JS/product.js" defer></script>
+  <script src="../JS/cartCount.js"></script>
 </head>
 
 <body>
@@ -21,11 +27,11 @@
           <li><a href="products.html">Products</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="checkout.html" id="checkout-link">Checkout
-              <span id="cart-count" class="cart-count-badge">0</span></a></li>
+          <li><a href="checkout.html" id="checkout-link">Checkout <span id="cart-count"
+                class="cart-count-badge"></span></a></li>
           <li><a href="login.html">Login</a></li>
         </ul>
-        <div class="hamburger" id="hamburger"> 
+        <div class="hamburger" id="hamburger">
           ☰
         </div>
       </nav>
@@ -34,8 +40,8 @@
 
   <main class="product-detail-page container">
     <div class="breadcrumb">
-      <a href="products.html">Products</a> &gt; 
-      <span id="product-category"></span> &gt; 
+      <a href="products.html">Products</a> &gt;
+      <span id="product-category"></span> &gt;
       <span id="product-name-breadcrumb"></span>
     </div>
 
@@ -43,23 +49,23 @@
       <div class="product-image-section">
         <img id="product-image" src="" alt="Product Image" />
       </div>
-      
+
       <div class="product-info-section">
         <h1 id="product-title"></h1>
         <div class="product-meta">
           <span class="brand" id="product-brand"></span>
           <span class="category" id="product-category-full"></span>
         </div>
-        
+
         <div class="price-section">
           <span class="price" id="product-price"></span>
           <span class="stock" id="product-stock"></span>
         </div>
-        
+
         <div class="product-description">
           <p id="product-description"></p>
         </div>
-        
+
         <div class="quantity-selector">
           <label for="quantity">Quantity:</label>
           <div class="quantity-controls">
@@ -68,7 +74,7 @@
             <button type="button" id="increase-qty">+</button>
           </div>
         </div>
-        
+
         <div class="action-buttons">
           <button class="add-to-cart-btn" id="add-to-cart-detail">
             Add to Cart
@@ -77,7 +83,7 @@
             Buy Now
           </button>
         </div>
-        
+
         <div class="product-features">
           <h3>Key Features</h3>
           <ul id="feature-list">
@@ -94,13 +100,14 @@
       </div>
     </section>
   </main>
-
   <footer>
     <div class="container">
       <p>&copy; 2025 TechHub. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="../JS/product.js"></script>
 </body>
+
+
+
 </html>

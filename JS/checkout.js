@@ -1,43 +1,57 @@
-
-document.addEventListener("DOMContentLoaded", function () {
-  const hamburger = document.getElementById("hamburger");
-  let navDesc   = document.getElementById('navLinks');    // links container
-  if (hamburger) {
-    hamburger.addEventListener("click", function () {
-       navDesc.classList.toggle('open');
+$(document).ready(function () {
+  let hamburger = $("#hamburger");
+  let navDesc = $('#navLinks');    // links container
+  if (hamburger.length) {
+    hamburger.on("click", function () {
+      navDesc.toggleClass('open');
     });
+  }
+  renderCart()
+});
+
+$("#checkout-form").on("submit", function (e) {
+  e.preventDefault();
+  let allCarts = JSON.parse(localStorage.getItem("allCarts"))
+  if (!sessionStorage.getItem("currentUser")) {
+    $("#loginModal").css("display", "flex");
+  } else {
+    if (allCarts[currentUser.email]) {
+      allCarts[currentUser.email] = []
+      localStorage.setItem("allCarts",JSON.stringify(allCarts))
+      renderCart()
+      return alert("Order Placed!")
+    }
+    else {
+      return alert("Your Cart is empty!")
+    }
   }
 });
 
+function closeModal() {
+  $("#loginModal").css("display", "none");
+}
 
-const isLoggedIn = false;
+let PCParts = JSON.parse(localStorage.getItem("PCParts")) || [];
 
-  document.getElementById("checkout-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (!isLoggedIn) {
-      document.getElementById("loginModal").style.display = "flex";
-    } else {
-      alert("Order placed!");
-    }
-  });
-
-  function closeModal() {
-    document.getElementById("loginModal").style.display = "none";
-  }
-
-  // Load PCParts from localStorage (make sure you store it there on your products page)
-const PCParts = JSON.parse(localStorage.getItem("PCParts")) || [];
-
-// Cache cart container
-const cartSection = document.querySelector(".cart-section");
+let cartSection = $(".cart-section");
+let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
 
 function renderCart() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cartSection.innerHTML = "<h2>Your Cart</h2>";
+  if (!currentUser || !currentUser.email) {
+    cartSection.html("<h2>Your Cart</h2><p>Please log in to view your cart.</p>");
+    updateSummary(0);
+    updateCartCount();
+    return;
+  }
+
+  let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
+  let cart = allCarts[currentUser.email] || []
+  cartSection.html("<h2>Your Cart</h2>");
 
   if (cart.length === 0) {
-    cartSection.innerHTML += "<p>Your cart is empty.</p>";
+    cartSection.append("<p>Your cart is empty.</p>");
     updateSummary(0);
+    updateCartCount()
     return;
   }
 
@@ -46,99 +60,95 @@ function renderCart() {
   cart.forEach((product, index) => {
     subtotal += product.price * product.quantity;
 
-    const itemDiv = document.createElement("div");
-    itemDiv.classList.add("cart-item");
+    let itemDiv = $("<div>").addClass("cart-item");
 
-    const detailsDiv = document.createElement("div");
-    detailsDiv.classList.add("cart-item-details");
-    detailsDiv.innerHTML = `
+    let detailsDiv = $("<div>").addClass("cart-item-details").html(`
       <h3>${product.name}</h3>
       <p>Price: $${product.price}</p>
-    `;
+    `);
 
-    const img = document.createElement("img");
-    img.src = product.image;
-    img.alt = product.name;
+    let img = $("<img>").attr({
+      src: product.image,
+      alt: product.name
+    });
 
-    // Quantity control container
-    let controlsDiv = document.createElement("div");
-    controlsDiv.classList.add("quantity-control");
+    let controlsDiv = $("<div>").addClass("quantity-control");
 
-    const qtySpan = document.createElement("span");
-    qtySpan.textContent = product.quantity;
+    let qtySpan = $("<span>").text(product.quantity);
 
     if (product.quantity === 1) {
-      // Plus button (top)
-      const plusBtn = document.createElement("button");
-      plusBtn.classList.add("quantity-btn");
-      plusBtn.title = "Increase quantity";
-      plusBtn.textContent = "+";
-      plusBtn.onclick = () => changeQuantity(index, +1);
+      let plusBtn = $("<button>").addClass("quantity-btn")
+        .attr("title", "Increase quantity")
+        .text("+")
+        .on("click", () => changeQuantity(index, +1));
 
-      // Trash button (bottom)
-      const deleteBtn = document.createElement("button");
-      deleteBtn.classList.add("delete-btn");
-      deleteBtn.title = "Delete item";
-      deleteBtn.innerHTML = "🗑️";
-      deleteBtn.onclick = () => deleteItem(index);
+      let deleteBtn = $("<button>").addClass("delete-btn")
+        .attr("title", "Delete item")
+        .html(`<img src="../HTML/img/icons8-delete-30.png" alt="">`)
+        .on("click", () => deleteItem(index));
 
-      controlsDiv.appendChild(plusBtn);
-      controlsDiv.appendChild(qtySpan);
-      controlsDiv.appendChild(deleteBtn);
-
+      controlsDiv.append(plusBtn, qtySpan, deleteBtn);
     } else {
-      // Plus button (top)
-      const plusBtn = document.createElement("button");
-      plusBtn.classList.add("quantity-btn");
-      plusBtn.title = "Increase quantity";
-      plusBtn.textContent = "+";
-      plusBtn.onclick = () => changeQuantity(index, +1);
+      let plusBtn = $("<button>").addClass("quantity-btn")
+        .attr("title", "Increase quantity")
+        .text("+")
+        .on("click", () => changeQuantity(index, +1));
 
-      // Minus button (bottom)
-      const minusBtn = document.createElement("button");
-      minusBtn.classList.add("quantity-btn");
-      minusBtn.title = "Decrease quantity";
-      minusBtn.textContent = "-";
-      minusBtn.onclick = () => changeQuantity(index, -1);
+      let minusBtn = $("<button>").addClass("quantity-btn")
+        .attr("title", "Decrease quantity")
+        .text("-")
+        .on("click", () => changeQuantity(index, -1));
 
-      controlsDiv.appendChild(plusBtn);
-      controlsDiv.appendChild(qtySpan);
-      controlsDiv.appendChild(minusBtn);
+      controlsDiv.append(plusBtn, qtySpan, minusBtn);
     }
 
-    itemDiv.appendChild(img);
-    itemDiv.appendChild(detailsDiv);
-    itemDiv.appendChild(controlsDiv);
-
-    cartSection.appendChild(itemDiv);
+    itemDiv.append(img, detailsDiv, controlsDiv);
+    cartSection.append(itemDiv);
   });
 
   updateSummary(subtotal);
+  updateCartCount()
 }
 
 function updateSummary(subtotal) {
-  const delivery = 5.00;
-  const total = subtotal + delivery;
+  let delivery = 5.00;
+  let total = subtotal + delivery;
 
-  document.querySelector(".summary-line:nth-child(1) span:last-child").textContent = `$${subtotal.toFixed(2)}`;
-  document.querySelector(".summary-line:nth-child(2) span:last-child").textContent = `$${delivery.toFixed(2)}`;
-  document.querySelector(".summary-line.total span:last-child").textContent = `$${total.toFixed(2)}`;
+  $(".summary-line:nth-child(1) span:last-child").text(`$${subtotal.toFixed(2)}`);
+  $(".summary-line:nth-child(2) span:last-child").text(`$${delivery.toFixed(2)}`);
+  $(".summary-line.total span:last-child").text(`$${total.toFixed(2)}`);
+}
+
+function updateCartCount() {
+  let cartCount = $("#cart-count");
+  if (!cartCount.length) return;
+
+  let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
+  let cart = (currentUser && currentUser.email) ? allCarts[currentUser.email] || [] : [];
+  let totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  cartCount.text(totalQty);
+  cartCount.css("display", totalQty > 0 ? "inline-block" : "none");
 }
 
 function deleteItem(index) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (!currentUser || !currentUser.email) return;
+  let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
+  let cart = allCarts[currentUser.email] || []
   cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
+  allCarts[currentUser.email] = cart
+  localStorage.setItem("allCarts", JSON.stringify(allCarts));
   renderCart();
 }
 
 function changeQuantity(index, delta) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
+  let cart = allCarts[currentUser.email] || []
   let product = cart[index];
   if (!product) return;
 
-  const availableStock = getAvailableStock(product.name);
-  const newQty = product.quantity + delta;
+  let availableStock = getAvailableStock(product.name);
+  let newQty = product.quantity + delta;
 
   if (newQty < 1) {
     deleteItem(index);
@@ -152,17 +162,12 @@ function changeQuantity(index, delta) {
 
   product.quantity = newQty;
   cart[index] = product;
-  localStorage.setItem("cart", JSON.stringify(cart));
+  allCarts[currentUser.email] = cart
+  localStorage.setItem("allCarts", JSON.stringify(allCarts));
   renderCart();
 }
 
 function getAvailableStock(productName) {
-  const product = PCParts.find(p => p.name === productName);
+  let product = PCParts.find(p => p.name === productName);
   return product ? product.quantity : 0;
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  renderCart();
-});
-
-

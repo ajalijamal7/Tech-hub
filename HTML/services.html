@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Services - TechHub</title>
   <link rel="stylesheet" href="../CSS/header.css" />
   <link rel="stylesheet" href="../CSS/services.css" />
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../JS/services.js"></script>
+<link rel="icon" type="image/x-icon" href="../HTML/Icons/TechHub_Logo.png">
   <script src="../JS/hamburger.js" defer></script>
 </head>
 
 <body>
-   <header>
-      <div class="container">
+  <header>
+    <div class="container">
       <div class="logo-wrap">
-      <img src="../HTML/Icons/TechHub_Logo.png">
+        <img src="../HTML/Icons/TechHub_Logo.png">
       </div>
       <nav class="navbar">
         <ul class="nav-links" id="navLinks">
           <li><a href="index.html">Home</a></li>
           <li><a href="products.html">Products</a></li>
-          <li><a href="services.html"  class="active" >Services</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="checkout.html">Checkout</a></li>
+          <li><a href="checkout.html">Checkout <span id="cart-count" class="cart-count-badge"></span></a></li>
           <li><a href="login.html">Login</a></li>
         </ul>
-        
+
         <!-- Hamburger menu for mobile view (expandable) -->
-        <div class="hamburger" id="hamburger"> 
+        <div class="hamburger" id="hamburger">
           ☰
         </div>
 
@@ -45,8 +48,11 @@
         <input type="checkbox" id="toggle1" class="read-more-toggle" />
         <label for="toggle1" class="read-more-label"></label>
         <div class="read-more-content">
-          <p>Our expert technicians select and assemble quality components to deliver high-performance systems that fit your budget and preferences. We optimize cooling, cable management, and software setup for a smooth experience.</p>
-          <p>We offer consultations to recommend the best hardware and future-proof your build. Plus, all our builds come with a warranty and post-build support.</p>
+          <p>Our expert technicians select and assemble quality components to deliver high-performance systems that fit
+            your budget and preferences. We optimize cooling, cable management, and software setup for a smooth
+            experience.</p>
+          <p>We offer consultations to recommend the best hardware and future-proof your build. Plus, all our builds
+            come with a warranty and post-build support.</p>
         </div>
       </article>
 
@@ -57,68 +63,64 @@
         <input type="checkbox" id="toggle2" class="read-more-toggle" />
         <label for="toggle2" class="read-more-label"></label>
         <div class="read-more-content">
-          <p>We troubleshoot hardware and software issues, perform virus removal, upgrade components, and provide regular cleaning to prevent overheating.</p>
-          <p>Our team ensures your system stays fast and reliable, minimizing downtime and extending the life of your PC. Fast turnaround and affordable pricing guaranteed.</p>
+          <p>We troubleshoot hardware and software issues, perform virus removal, upgrade components, and provide
+            regular cleaning to prevent overheating.</p>
+          <p>Our team ensures your system stays fast and reliable, minimizing downtime and extending the life of your
+            PC. Fast turnaround and affordable pricing guaranteed.</p>
         </div>
       </article>
 
       <section class="pc-builder">
-  <h2>Build Your PC</h2>
-  <p>Choose your components and order your custom PC.</p>
-  <form>
-    <div class="form-group">
-      <label for="cpu">CPU</label>
-      <select id="cpu" name="cpu" required>
-        <option value="" disabled selected>Select CPU</option>
-        <option value="intel-i5">Intel Core i5</option>
-        <option value="intel-i7">Intel Core i7</option>
-        <option value="amd-ryzen5">AMD Ryzen 5</option>
-        <option value="amd-ryzen7">AMD Ryzen 7</option>
-      </select>
-    </div>
+        <h2>Build Your PC</h2>
+        <p>Choose your components and order your custom PC.</p>
+        <form>
+          <div class="form-group">
+            <label for="cpu">CPU</label>
+            <select id="cpu" name="cpu">
+              <option value="" disabled selected>Select CPU</option>
+            </select>
+          </div>
 
-    <div class="form-group">
-      <label for="gpu">GPU</label>
-      <select id="gpu" name="gpu" required>
-        <option value="" disabled selected>Select GPU</option>
-        <option value="nvidia-3060">NVIDIA RTX 3060</option>
-        <option value="nvidia-3070">NVIDIA RTX 3070</option>
-        <option value="amd-rx6600">AMD Radeon RX 6600</option>
-        <option value="amd-rx6700">AMD Radeon RX 6700</option>
-      </select>
-    </div>
+          <div class="form-group">
+            <label for="gpu">GPU</label>
+            <select id="gpu" name="gpu">
+              <option value="" disabled selected>Select GPU</option>
+            </select>
+          </div>
 
-    <div class="form-group">
-      <label for="ram">RAM</label>
-      <select id="ram" name="ram" required>
-        <option value="" disabled selected>Select RAM</option>
-        <option value="8gb">8 GB</option>
-        <option value="16gb">16 GB</option>
-        <option value="32gb">32 GB</option>
-      </select>
-    </div>
+          <div class="form-group">
+            <label for="Motherboard">Motherboard</label>
+            <select id="motherboard" name="Motherboard">
+              <option value="" disabled selected>Select Motherboard</option>
+            </select>
+          </div>
 
-    <div class="form-group">
-      <label for="storage">Storage</label>
-      <select id="storage" name="storage" required>
-        <option value="" disabled selected>Select Storage</option>
-        <option value="256ssd">256 GB SSD</option>
-        <option value="512ssd">512 GB SSD</option>
-        <option value="1tbhdd">1 TB HDD</option>
-        <option value="1tbssd">1 TB SSD</option>
-      </select>
-    </div>
+          <div class="form-group">
+            <label for="ram">RAM</label>
+            <select id="ram" name="ram">
+              <option value="" disabled selected>Select RAM</option>
+            </select>
+          </div>
 
-    <button type="submit" class="order-btn">Order Now</button>
-  </form>
-</section>
-<footer>
-    <div class="container">
-      <p>&copy; 2025 Parts Pulse. All rights reserved.</p>
-    </div>
-  </footer>
+          <div class="form-group">
+            <label for="storage">Storage</label>
+            <select id="storage" name="storage">
+              <option value="" disabled selected>Select Storage</option>
+            </select>
+          </div>
+
+          <button type="submit" class="order-btn" id="btn-order">Order Now</button>
+        </form>
+      </section>
+
 
     </div>
   </div>
 </body>
+<footer>
+  <div class="container">
+    <p>&copy; 2025 TechHub. All rights reserved.</p>
+  </div>
+</footer>
+
 </html>
