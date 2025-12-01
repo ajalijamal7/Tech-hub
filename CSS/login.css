@@ -51,10 +51,12 @@
 
 body {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-   
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+    flex-grow: 1;
+    height: 100vh;
     background: var(--bg-dark);
     color: var(--text-light);
 }
@@ -338,8 +340,6 @@ body {
    RESPONSIVE DESIGN
 ========================================= */
 @media (max-width: 768px) {
-
-    
     body {
         height: auto;
         background: var(--bg-dark);
@@ -484,6 +484,7 @@ body {
         height: 35px;
     }
 }
+
 
 /* Success/Error Messages */
 .message {

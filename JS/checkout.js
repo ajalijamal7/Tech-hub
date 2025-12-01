@@ -14,10 +14,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.getElementById("checkout-form").addEventListener("submit", function (e) {
   e.preventDefault();
+  let allCarts = JSON.parse(localStorage.getItem("allCarts"))
   if (!sessionStorage.getItem("currentUser")) {
     document.getElementById("loginModal").style.display = "flex";
   } else {
-    alert("Order placed!");
+    if (allCarts[currentUser.email]) {
+      allCarts[currentUser.email] = []
+      localStorage.setItem("allCarts",JSON.stringify(allCarts))
+      renderCart()
+      return alert("Order Placed!")
+    }
+    else {
+      return alert("Your Cart is empty!")
+    }
   }
 });
 

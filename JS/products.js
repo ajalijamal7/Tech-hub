@@ -11,15 +11,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // Filter toggle functionality - FIXED
   const filterToggle = document.querySelector('.filter-toggle');
   const filters = document.querySelector('.filters');
-  
+
   console.log('Filter toggle element:', filterToggle); // Debug log
   console.log('Filters element:', filters); // Debug log
-  
+
   if (filterToggle && filters) {
-    filterToggle.addEventListener('click', function() {
+    filterToggle.addEventListener('click', function () {
       console.log('Filter toggle clicked'); // Debug log
       filters.classList.toggle('active');
-      
+
       // Change button text based on state
       if (filters.classList.contains('active')) {
         filterToggle.textContent = 'Hide Filters';
@@ -41,7 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Search functionality
-  const searchBarInput = document.getElementById("search-bar");
+  const searchBarInput = document.getElementById("search-bar")
+  console.log(searchBarInput)
   if (searchBarInput) {
     searchBarInput.addEventListener("input", () => {
       let searchedItems = PCParts.filter((part) => {
@@ -53,6 +54,20 @@ document.addEventListener("DOMContentLoaded", function () {
       displayItems(searchedItems);
     });
   }
+
+  const searchHeaderBarInput = document.getElementById("header-search-input")
+  if (searchHeaderBarInput) {
+    searchHeaderBarInput.addEventListener("input", () => {
+      let searchedItems = PCParts.filter((part) => {
+        if (searchHeaderBarInput.value == "") return true;
+        if (part.name.toUpperCase().includes(searchHeaderBarInput.value.toUpperCase()))
+          return true;
+        else return false;
+      });
+      displayItems(searchedItems);
+    });
+  }
+
 });
 
 
@@ -148,7 +163,7 @@ let PCParts = [
     price: 199,
     quantity: 7,
     desc: "Advanced gaming keyboard with OmniPoint 3.0 adjustable switches, OLED smart display, and per-key RGB illumination for customization.",
-    image: "img/SteelSeries Apex Pro Gen 3.jpg"
+    image: "img/SteelSeries Apex Pro Gen 3.png"
 
   },
 
@@ -875,14 +890,14 @@ function updateCartCount() {
   if (!cartCount) return;
 
   let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
-  
+
   let cart;
 
-if (currentUser && currentUser.email) {
+  if (currentUser && currentUser.email) {
     cart = allCarts[currentUser.email] || [];
-} else {
+  } else {
     cart = []; // guest user
-}
+  }
 
 
   let totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
