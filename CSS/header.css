@@ -54,7 +54,9 @@ header {
     width: 100%;
     box-sizing: border-box;
     flex-shrink: 0;
-    margin-bottom: 0px;
+    margin-bottom: 0;
+    display: flex; /* or whatever suits your layout */
+    position: relative;
 }
 
 header .container {

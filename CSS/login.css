@@ -56,7 +56,6 @@ body {
     gap: 40px;
     justify-content: center;
     flex-grow: 1;
-    height: 100vh;
     background: var(--bg-dark);
     color: var(--text-light);
 }
