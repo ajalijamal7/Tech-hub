@@ -15,7 +15,7 @@ async function initializeHomePage() {
 
 async function loadProducts() {
   try {
-    let response = await fetch('../data/products.json');
+    let response = await fetch('data/products.json');
     let data = await response.json();
     PCParts = data.PCParts;
     localStorage.setItem("PCParts", JSON.stringify(PCParts));
