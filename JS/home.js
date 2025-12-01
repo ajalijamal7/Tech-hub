@@ -1,8 +1,7 @@
-// Global variables
 let PCParts = [];
 let currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
 
-// Initialize application
+
 $(document).ready(function() {
   initializeHomePage();
 });
@@ -14,7 +13,6 @@ async function initializeHomePage() {
   updateCartCount();
 }
 
-// Load products from JSON
 async function loadProducts() {
   try {
     let response = await fetch('../data/products.json');
@@ -30,9 +28,7 @@ async function loadProducts() {
   }
 }
 
-// Initialize event listeners
 function initializeEventListeners() {
-  // Hamburger menu
   let $hamburger = $("#hamburger");
   let $navDesc = $('#navLinks');
   if ($hamburger.length) {
@@ -41,11 +37,10 @@ function initializeEventListeners() {
     });
   }
 
-  // Cart animations
   initializeCartAnimations();
 }
 
-// Cart animations
+
 function initializeCartAnimations() {
   $("body").on("click", ".add-to-cart", function(e) {
     let $btn = $(this);
@@ -60,18 +55,16 @@ function initializeCartAnimations() {
   });
 }
 
-// Display featured products
 function displayFeaturedProducts() {
   let $featuredGrid = $("#featured-products-grid");
   if (!$featuredGrid.length) return;
 
-  // Get featured products (you can customize this logic)
-  let featuredProducts = PCParts.slice(0, 3); // Show first 3 products, or customize as needed
+  let featuredProducts = PCParts.slice(0, 3); 
 
   let displayProducts = featuredProducts.map(part => `
     <article class="product-card">
       <a href="product.html?product=${encodeURIComponent(part.name)}" class="product-link">
-        <img src="${part.image}" alt="${part.name}" />
+        <img src="${"HTML/"+part.image}" alt="${part.name}" />
         <h3>${part.name}</h3>
       </a>
       <p class="price">$${part.price}</p>

@@ -9,16 +9,20 @@ $(document).ready(function () {
   renderCart()
 });
 
+let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
 $("#checkout-form").on("submit", function (e) {
   e.preventDefault();
+
   let allCarts = JSON.parse(localStorage.getItem("allCarts"))
   if (!sessionStorage.getItem("currentUser")) {
     $("#loginModal").css("display", "flex");
   } else {
-    if (allCarts[currentUser.email]) {
+    if (allCarts[currentUser.email].length>0) {
       allCarts[currentUser.email] = []
-      localStorage.setItem("allCarts",JSON.stringify(allCarts))
+      localStorage.setItem("allCarts", JSON.stringify(allCarts))
       renderCart()
+      $("#phone-number").val("")
+      $("#delivery-address").val("")
       return alert("Order Placed!")
     }
     else {
@@ -34,7 +38,7 @@ function closeModal() {
 let PCParts = JSON.parse(localStorage.getItem("PCParts")) || [];
 
 let cartSection = $(".cart-section");
-let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
+
 
 function renderCart() {
   if (!currentUser || !currentUser.email) {
@@ -47,6 +51,7 @@ function renderCart() {
   let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
   let cart = allCarts[currentUser.email] || []
   cartSection.html("<h2>Your Cart</h2>");
+  $("#full-name").val(currentUser.name[0].toUpperCase() + currentUser.name.slice(1))
 
   if (cart.length === 0) {
     cartSection.append("<p>Your cart is empty.</p>");
@@ -84,7 +89,7 @@ function renderCart() {
 
       let deleteBtn = $("<button>").addClass("delete-btn")
         .attr("title", "Delete item")
-        .html(`<img src="../HTML/img/icons8-delete-30.png" alt="">`)
+        .html(`<span class="material-symbols-outlined">delete</span>`)
         .on("click", () => deleteItem(index));
 
       controlsDiv.append(plusBtn, qtySpan, deleteBtn);
