@@ -109,7 +109,7 @@ function displayItems(PCPartsArray) {
   let displayProducts = PCPartsArray.map(part => `
     <article class="product-card">
       <a href="product.html?product=${encodeURIComponent(part.name)}" class="product-link">
-        <img src="${part.image}" alt="${part.name}" />
+        <img src="${part.image}" loading='lazy' alt="${part.name}" />
         <h3>${part.name}</h3>
       </a>
       <p class="price">$${part.price}</p>
