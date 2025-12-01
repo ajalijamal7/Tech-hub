@@ -5,10 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Us - TechHub</title>
-  <link rel="stylesheet" href="../CSS/about.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
+  <link rel="stylesheet" href="../CSS/about.css" />
+  <link rel="icon" type="image/x-icon" href="../HTML/Icons/TechHub_Logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../JS/cartCount.js"></script>
-
   <script src="../JS/hamburger.js"></script>
 </head>
 
@@ -27,58 +29,56 @@
           <li><a href="checkout.html">Checkout <span id="cart-count" class="cart-count-badge"></span></a></li>
           <li><a href="login.html">Login</a></li>
         </ul>
-
-        <!-- Hamburger menu for mobile view (expandable) -->
         <div class="hamburger" id="hamburger">
           ☰
         </div>
-
       </nav>
     </div>
   </header>
-  <main>
-    <section class="about-intro container">
-      <h2>About TechHub</h2>
-      <p>TechHub is your trusted partner for high-quality PC components and custom PC builds, providing cutting-edge
-        technology solutions tailored to your needs.</p>
+
+  <main class="container">
+    <section class="hero">
+      <h1>About TechHub</h1>
+      <p>Your trusted partner for high-quality PC components and custom builds</p>
     </section>
 
-    <section class="mission-vision container">
-      <div class="mission">
-        <h3>Our Mission</h3>
-        <p>To deliver premium PC building experiences by offering reliable components, expert guidance, and exceptional
-          customer service to enthusiasts and professionals alike.</p>
+    <section class="content-grid">
+      <div class="card">
+        <i class="fas fa-bullseye"></i>
+        <h2>Our Mission</h2>
+        <p>To deliver premium PC building experiences with reliable components and expert guidance for enthusiasts and professionals.</p>
       </div>
-      <div class="vision">
-        <h3>Our Vision</h3>
-        <p>To be the leading destination for PC builders in Lebanon and beyond, known for innovation, quality, and a
-          community-driven approach.</p>
+      
+      <div class="card">
+        <i class="fas fa-eye"></i>
+        <h2>Our Vision</h2>
+        <p>To be Lebanon's leading PC building destination, known for innovation, quality, and community-driven excellence.</p>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact container">
-      <h3>Contact Us</h3>
-      <p><strong>Email:</strong> info@pcpulse.com</p>
-      <p><strong>Phone:</strong> +961 70 123 456</p>
-      <p><strong>Location:</strong> Hamra, Beirut, Lebanon</p>
+    <section class="contact">
+      <h2>Get In Touch</h2>
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> info@techhub.com</p>
+        <p><i class="fas fa-phone"></i> +961 70 123 456</p>
+        <p><i class="fas fa-map-marker-alt"></i> Hamra, Beirut, Lebanon</p>
+      </div>
     </section>
 
-    <!-- Map Section -->
-    <section class="map-container container">
-      <h3>Our Location</h3>
+    <section class="map">
+      <h2>Visit Us</h2>
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.5893542878654!2d35.501777415209264!3d33.89379158065273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f170c729e4a35%3A0xa0b8ef1a61c84770!2sBeirut!5e0!3m2!1sen!2slb!4v1716373055504!5m2!1sen!2slb"
-        width="100%" height="400" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade">
       </iframe>
     </section>
   </main>
 
-
-
   <footer>
-    <p>© 2025 TechHub. All rights reserved.</p>
+    <div class="container">
+      <p>© 2025 TechHub. All rights reserved.</p>
+    </div>
   </footer>
 </body>
 

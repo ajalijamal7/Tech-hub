@@ -1,34 +1,34 @@
 $(document).ready(function () {
   // ---- Hamburger Menu Toggle ----
-function initHamburgerMenu() {
-  const $hamburger = $("#hamburger");
-  const $navLinks = $("#navLinks");
-  
-  if ($hamburger.length && $navLinks.length) {
-    $hamburger.on("click", function() {
-      $navLinks.toggleClass("open");
-      console.log("Hamburger clicked - menu toggled");
-    });
+  function initHamburgerMenu() {
+    let $hamburger = $("#hamburger");
+    let $navLinks = $("#navLinks");
     
-    // Close menu when clicking on a link
-    $navLinks.find("a").on("click", function() {
-      $navLinks.removeClass("open");
-    });
-  } else {
-    console.log("Hamburger menu elements not found");
+    if ($hamburger.length && $navLinks.length) {
+      $hamburger.on("click", function() {
+        $navLinks.toggleClass("open");
+        console.log("Hamburger clicked - menu toggled");
+      });
+      
+      // Close menu when clicking on a link
+      $navLinks.find("a").on("click", function() {
+        $navLinks.removeClass("open");
+      });
+    } else {
+      console.log("Hamburger menu elements not found");
+    }
   }
-}
 
-// Initialize hamburger menu
-initHamburgerMenu();
+  // Initialize hamburger menu
+  initHamburgerMenu();
 
   let $container = $("#body-container");
-  const USERS_KEY = "users";
-  const CURRENT_USER_KEY = "currentUser";
+  let USERS_KEY = "users";
+  let CURRENT_USER_KEY = "currentUser";
 
   // ---- helpers for localStorage ----
   function getUsers() {
-    const data = localStorage.getItem(USERS_KEY);
+    let data = localStorage.getItem(USERS_KEY);
     return data ? JSON.parse(data) : [];
   }
 
@@ -37,7 +37,7 @@ initHamburgerMenu();
   }
 
   function getCurrentUser() {
-    const data = sessionStorage.getItem(CURRENT_USER_KEY);
+    let data = sessionStorage.getItem(CURRENT_USER_KEY);
     return data ? JSON.parse(data) : null;
   }
 
@@ -51,7 +51,7 @@ initHamburgerMenu();
 
   // Update UI based on login status
   function updateLoginUI() {
-    const currentUser = getCurrentUser();
+    let currentUser = getCurrentUser();
 
     if (currentUser) {
       // User is logged in - show dashboard
@@ -60,7 +60,7 @@ initHamburgerMenu();
       $("#welcomeMessage").text(`Welcome!`);
       $("#welcomeSubtext").text("You are successfully logged in and can now access all site features.");
       $("#register").text("Logout").removeClass("register-btn").addClass("logout-btn");
-      $("#login-logout-message").text("We’re grateful you’re here. Let’s continue the journey.")
+      $("#login-logout-message").text("We're grateful you're here. Let's continue the journey.")
     } else {
       // User is logged out - show forms
       $container.removeClass("user-logged-in active");
@@ -75,7 +75,7 @@ initHamburgerMenu();
   updateLoginUI();
 
   $("#register").on("click", function () {
-    const currentUser = getCurrentUser();
+    let currentUser = getCurrentUser();
 
     if (currentUser) {
       // User is logged in - perform logout
@@ -95,9 +95,9 @@ initHamburgerMenu();
   $("#registerBtn").on("click", function (e) {
     e.preventDefault();
 
-    const name = $(".sign-up input[type='text']").val().trim();
-    const email = $(".sign-up input[type='email']").val().trim();
-    const password = $(".sign-up input[type='password']").val();
+    let name = $(".sign-up input[type='text']").val().trim();
+    let email = $(".sign-up input[type='email']").val().trim();
+    let password = $(".sign-up input[type='password']").val();
 
     if (!name || !email || !password) {
       alert("Please fill all fields.");
@@ -107,7 +107,7 @@ initHamburgerMenu();
     let users = getUsers();
 
     // check if email already exists
-    const existing = users.find(u => u.email === email);
+    let existing = users.find(u => u.email === email);
     if (existing) {
       alert("This email is already registered. Please log in.");
       return;
@@ -141,12 +141,12 @@ initHamburgerMenu();
   $("#loginBtn").on("click", function (e) {
     e.preventDefault();
 
-    const email = $(".sign-in input[type='email']").val().trim();
-    const password = $(".sign-in input[type='password']").val();
+    let email = $(".sign-in input[type='email']").val().trim();
+    let password = $(".sign-in input[type='password']").val();
 
     let users = getUsers();
 
-    const user = users.find(u => u.email === email && u.password === password);
+    let user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
       alert("Login successful! Welcome " + user.name);

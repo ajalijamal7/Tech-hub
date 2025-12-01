@@ -1,17 +1,16 @@
 // Global variables
 let PCParts = [];
-let Products_grid = $(".product-grid");
 let currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
 
 // Initialize application
 $(document).ready(function() {
-  initializeApp();
+  initializeHomePage();
 });
 
-async function initializeApp() {
+async function initializeHomePage() {
   await loadProducts();
   initializeEventListeners();
-  displayItems(PCParts);
+  displayFeaturedProducts();
   updateCartCount();
 }
 
@@ -24,7 +23,6 @@ async function loadProducts() {
     localStorage.setItem("PCParts", JSON.stringify(PCParts));
   } catch (error) {
     console.error('Error loading products:', error);
-    // Fallback to localStorage if available
     let storedProducts = localStorage.getItem("PCParts");
     if (storedProducts) {
       PCParts = JSON.parse(storedProducts);
@@ -32,7 +30,7 @@ async function loadProducts() {
   }
 }
 
-// Initialize all event listeners
+// Initialize event listeners
 function initializeEventListeners() {
   // Hamburger menu
   let $hamburger = $("#hamburger");
@@ -43,48 +41,8 @@ function initializeEventListeners() {
     });
   }
 
-  // Filter toggle
-  let $filterToggle = $('.filter-toggle');
-  let $filters = $('.filters');
-  if ($filterToggle.length && $filters.length) {
-    $filterToggle.on('click', function() {
-      $filters.toggleClass('active');
-      $filterToggle.text($filters.hasClass('active') 
-        ? 'Hide Filters' 
-        : 'Show Filters');
-    });
-  }
-
-  // Filter events
-  $('input[name="brand"], input[name="category"]').on("change", applyFilters);
-
-  // Search functionality
-  initializeSearch();
-  
-  // Cart animation
+  // Cart animations
   initializeCartAnimations();
-}
-
-// Search functionality
-function initializeSearch() {
-  let $searchBarInput = $("#search-bar");
-  let $searchHeaderBarInput = $("#header-search-input");
-
-  if ($searchBarInput.length) {
-    $searchBarInput.on("input", handleSearch);
-  }
-
-  if ($searchHeaderBarInput.length) {
-    $searchHeaderBarInput.on("input", handleSearch);
-  }
-
-  function handleSearch(event) {
-    let searchTerm = $(event.target).val().toUpperCase();
-    let searchedItems = PCParts.filter(part => 
-      searchTerm === "" || part.name.toUpperCase().includes(searchTerm)
-    );
-    displayItems(searchedItems);
-  }
 }
 
 // Cart animations
@@ -102,44 +60,26 @@ function initializeCartAnimations() {
   });
 }
 
-// Display products in grid
-function displayItems(PCPartsArray) {
-  if (!Products_grid.length) return;
-  
-  let displayProducts = PCPartsArray.map(part => `
+// Display featured products
+function displayFeaturedProducts() {
+  let $featuredGrid = $("#featured-products-grid");
+  if (!$featuredGrid.length) return;
+
+  // Get featured products (you can customize this logic)
+  let featuredProducts = PCParts.slice(0, 3); // Show first 3 products, or customize as needed
+
+  let displayProducts = featuredProducts.map(part => `
     <article class="product-card">
       <a href="product.html?product=${encodeURIComponent(part.name)}" class="product-link">
         <img src="${part.image}" alt="${part.name}" />
         <h3>${part.name}</h3>
       </a>
       <p class="price">$${part.price}</p>
-      <button class="add-to-cart" onclick="addToCartByName('${part.name}')">Add to Cart</button>
+      <button class="add-to-cart" data-product-name="${part.name}">Add to Cart</button>
     </article>
   `).join("");
   
-  Products_grid.html(displayProducts);
-}
-
-// Filter products
-function getSelectedFilters() {
-  let selectedBrand = $('input[name="brand"]:checked').val() || "ALL";
-  let selectedCategory = $('input[name="category"]:checked').val() || "ALL";
-  return { 
-    brand: selectedBrand.toUpperCase(), 
-    category: selectedCategory.toUpperCase() 
-  };
-}
-
-function applyFilters() {
-  let { brand, category } = getSelectedFilters();
-
-  let filteredItems = PCParts.filter(part => {
-    let brandMatch = (brand === "ALL") || (part.brand.toUpperCase() === brand);
-    let categoryMatch = (category === "ALL") || (part.category.toUpperCase() === category);
-    return brandMatch && categoryMatch;
-  });
-
-  displayItems(filteredItems);
+  $featuredGrid.html(displayProducts);
 }
 
 // Cart functionality
@@ -154,6 +94,12 @@ function updateCartCount() {
   $cartCount.text(totalQty);
   $cartCount.css("display", totalQty > 0 ? "inline-block" : "none");
 }
+
+// Event delegation for add to cart buttons
+$(document).on("click", ".add-to-cart", function() {
+  let productName = $(this).data("product-name");
+  addToCartByName(productName);
+});
 
 function addToCartByName(productName) {
   if (!currentUser) {

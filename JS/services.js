@@ -1,8 +1,8 @@
 $(function () {
 document.addEventListener("DOMContentLoaded", function () {
   // Hamburger menu functionality - jQuery version
-  const $hamburger = $("#hamburger");
-  const $navLinks = $("#navLinks");
+  let $hamburger = $("#hamburger");
+  let $navLinks = $("#navLinks");
   
   if ($hamburger.length && $navLinks.length) {
     $hamburger.on("click", function() {
@@ -71,15 +71,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function addToCartByName(productName) {
         if (!currentUser) return;
-        const product = PCParts.find(p => p.name === productName);
+        let product = PCParts.find(p => p.name === productName);
         if (!product) return;
 
         let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
         let cart = allCarts[currentUser.email] || []
 
-        const existing = cart.find(item => item.name === product.name);
+        let existing = cart.find(item => item.name === product.name);
 
-        const currentQtyInCart = existing ? existing.quantity : 0;
+        let currentQtyInCart = existing ? existing.quantity : 0;
 
         if (currentQtyInCart + 1 > product.quantity) {
             alert(`Sorry, only ${product.quantity} units of "${product.name}" are available.`);

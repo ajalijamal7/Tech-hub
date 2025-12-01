@@ -1,22 +1,19 @@
-
-document.addEventListener("DOMContentLoaded", function () {
-  const hamburger = document.getElementById("hamburger");
-  let navDesc = document.getElementById('navLinks');    // links container
-  if (hamburger) {
-    hamburger.addEventListener("click", function () {
-      navDesc.classList.toggle('open');
+$(document).ready(function () {
+  let hamburger = $("#hamburger");
+  let navDesc = $('#navLinks');    // links container
+  if (hamburger.length) {
+    hamburger.on("click", function () {
+      navDesc.toggleClass('open');
     });
   }
   renderCart()
 });
 
-
-
-document.getElementById("checkout-form").addEventListener("submit", function (e) {
+$("#checkout-form").on("submit", function (e) {
   e.preventDefault();
   let allCarts = JSON.parse(localStorage.getItem("allCarts"))
   if (!sessionStorage.getItem("currentUser")) {
-    document.getElementById("loginModal").style.display = "flex";
+    $("#loginModal").css("display", "flex");
   } else {
     if (allCarts[currentUser.email]) {
       allCarts[currentUser.email] = []
@@ -31,19 +28,17 @@ document.getElementById("checkout-form").addEventListener("submit", function (e)
 });
 
 function closeModal() {
-  document.getElementById("loginModal").style.display = "none";
+  $("#loginModal").css("display", "none");
 }
 
-const PCParts = JSON.parse(localStorage.getItem("PCParts")) || [];
+let PCParts = JSON.parse(localStorage.getItem("PCParts")) || [];
 
-const cartSection = document.querySelector(".cart-section");
+let cartSection = $(".cart-section");
 let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
 
 function renderCart() {
-
-
   if (!currentUser || !currentUser.email) {
-    cartSection.innerHTML = "<h2>Your Cart</h2><p>Please log in to view your cart.</p>";
+    cartSection.html("<h2>Your Cart</h2><p>Please log in to view your cart.</p>");
     updateSummary(0);
     updateCartCount();
     return;
@@ -51,81 +46,64 @@ function renderCart() {
 
   let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
   let cart = allCarts[currentUser.email] || []
-  cartSection.innerHTML = "<h2>Your Cart</h2>";
+  cartSection.html("<h2>Your Cart</h2>");
 
   if (cart.length === 0) {
-    cartSection.innerHTML += "<p>Your cart is empty.</p>";
+    cartSection.append("<p>Your cart is empty.</p>");
     updateSummary(0);
     updateCartCount()
     return;
   }
-
 
   let subtotal = 0;
 
   cart.forEach((product, index) => {
     subtotal += product.price * product.quantity;
 
-    const itemDiv = document.createElement("div");
-    itemDiv.classList.add("cart-item");
+    let itemDiv = $("<div>").addClass("cart-item");
 
-    const detailsDiv = document.createElement("div");
-    detailsDiv.classList.add("cart-item-details");
-    detailsDiv.innerHTML = `
+    let detailsDiv = $("<div>").addClass("cart-item-details").html(`
       <h3>${product.name}</h3>
       <p>Price: $${product.price}</p>
-    `;
+    `);
 
-    const img = document.createElement("img");
-    img.src = product.image;
-    img.alt = product.name;
+    let img = $("<img>").attr({
+      src: product.image,
+      alt: product.name
+    });
 
-    let controlsDiv = document.createElement("div");
-    controlsDiv.classList.add("quantity-control");
+    let controlsDiv = $("<div>").addClass("quantity-control");
 
-    const qtySpan = document.createElement("span");
-    qtySpan.textContent = product.quantity;
+    let qtySpan = $("<span>").text(product.quantity);
 
     if (product.quantity === 1) {
-      const plusBtn = document.createElement("button");
-      plusBtn.classList.add("quantity-btn");
-      plusBtn.title = "Increase quantity";
-      plusBtn.textContent = "+";
-      plusBtn.onclick = () => changeQuantity(index, +1);
+      let plusBtn = $("<button>").addClass("quantity-btn")
+        .attr("title", "Increase quantity")
+        .text("+")
+        .on("click", () => changeQuantity(index, +1));
 
-      const deleteBtn = document.createElement("button");
-      deleteBtn.classList.add("delete-btn");
-      deleteBtn.title = "Delete item";
-      deleteBtn.innerHTML = `<img src="../HTML/img/icons8-delete-30.png"  alt="">`;
-      deleteBtn.onclick = () => deleteItem(index);
+      let deleteBtn = $("<button>").addClass("delete-btn")
+        .attr("title", "Delete item")
+        .html(`<img src="../HTML/img/icons8-delete-30.png" alt="">`)
+        .on("click", () => deleteItem(index));
 
-      controlsDiv.appendChild(plusBtn);
-      controlsDiv.appendChild(qtySpan);
-      controlsDiv.appendChild(deleteBtn);
-
+      controlsDiv.append(plusBtn, qtySpan, deleteBtn);
     } else {
-      const plusBtn = document.createElement("button");
-      plusBtn.classList.add("quantity-btn");
-      plusBtn.title = "Increase quantity";
-      plusBtn.textContent = "+";
-      plusBtn.onclick = () => changeQuantity(index, +1);
+      let plusBtn = $("<button>").addClass("quantity-btn")
+        .attr("title", "Increase quantity")
+        .text("+")
+        .on("click", () => changeQuantity(index, +1));
 
-      const minusBtn = document.createElement("button");
-      minusBtn.classList.add("quantity-btn");
-      minusBtn.title = "Decrease quantity";
-      minusBtn.textContent = "-";
-      minusBtn.onclick = () => changeQuantity(index, -1);
+      let minusBtn = $("<button>").addClass("quantity-btn")
+        .attr("title", "Decrease quantity")
+        .text("-")
+        .on("click", () => changeQuantity(index, -1));
 
-      controlsDiv.appendChild(plusBtn);
-      controlsDiv.appendChild(qtySpan);
-      controlsDiv.appendChild(minusBtn);
+      controlsDiv.append(plusBtn, qtySpan, minusBtn);
     }
 
-    itemDiv.appendChild(img);
-    itemDiv.appendChild(detailsDiv);
-    itemDiv.appendChild(controlsDiv);
-
-    cartSection.appendChild(itemDiv);
+    itemDiv.append(img, detailsDiv, controlsDiv);
+    cartSection.append(itemDiv);
   });
 
   updateSummary(subtotal);
@@ -133,39 +111,25 @@ function renderCart() {
 }
 
 function updateSummary(subtotal) {
-  const delivery = 5.00;
-  const total = subtotal + delivery;
+  let delivery = 5.00;
+  let total = subtotal + delivery;
 
-  document.querySelector(".summary-line:nth-child(1) span:last-child").textContent = `$${subtotal.toFixed(2)}`;
-  document.querySelector(".summary-line:nth-child(2) span:last-child").textContent = `$${delivery.toFixed(2)}`;
-  document.querySelector(".summary-line.total span:last-child").textContent = `$${total.toFixed(2)}`;
+  $(".summary-line:nth-child(1) span:last-child").text(`$${subtotal.toFixed(2)}`);
+  $(".summary-line:nth-child(2) span:last-child").text(`$${delivery.toFixed(2)}`);
+  $(".summary-line.total span:last-child").text(`$${total.toFixed(2)}`);
 }
-
-
 
 function updateCartCount() {
-  let cartCount = document.getElementById("cart-count");
-  if (!cartCount) return;
+  let cartCount = $("#cart-count");
+  if (!cartCount.length) return;
 
   let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
-
-  let cart;
-
-  if (currentUser && currentUser.email) {
-    cart = allCarts[currentUser.email] || [];
-  } else {
-    cart = [];
-  }
-
-
-
+  let cart = (currentUser && currentUser.email) ? allCarts[currentUser.email] || [] : [];
   let totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  cartCount.textContent = totalQty;
-  cartCount.style.display = totalQty > 0 ? "inline-block" : "none";
+  cartCount.text(totalQty);
+  cartCount.css("display", totalQty > 0 ? "inline-block" : "none");
 }
-
-
 
 function deleteItem(index) {
   if (!currentUser || !currentUser.email) return;
@@ -183,8 +147,8 @@ function changeQuantity(index, delta) {
   let product = cart[index];
   if (!product) return;
 
-  const availableStock = getAvailableStock(product.name);
-  const newQty = product.quantity + delta;
+  let availableStock = getAvailableStock(product.name);
+  let newQty = product.quantity + delta;
 
   if (newQty < 1) {
     deleteItem(index);
@@ -204,10 +168,6 @@ function changeQuantity(index, delta) {
 }
 
 function getAvailableStock(productName) {
-  const product = PCParts.find(p => p.name === productName);
+  let product = PCParts.find(p => p.name === productName);
   return product ? product.quantity : 0;
 }
-
-
-
-
