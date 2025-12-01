@@ -100,6 +100,7 @@
   display: flex;
   gap: 1rem;
   margin-bottom: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .brand,
@@ -353,38 +354,138 @@
   margin-top: 0.5rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .product-detail-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 1.5rem;
-  }
-
-  .action-buttons {
-    flex-direction: column;
-  }
-
-  .product-info-section h1 {
-    font-size: 1.8rem;
-  }
-
-  .price {
-    font-size: 1.8rem;
-  }
-
-  .product-image-section {
-    padding: 1.5rem;
-  }
-
-  .related-products {
-    padding: 1.5rem;
-  }
-}
-
 /* Animation for add to cart */
 .add-to-cart-btn.added {
   background: var(--primary-green);
   border-color: var(--primary-green);
   color: var(--black);
+}
+
+/* =========================================
+   RESPONSIVE BREAKPOINTS (3 SIZES ONLY)
+========================================= */
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .product-detail-container {
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+  
+  .product-info-section h1 {
+    font-size: 1.9rem;
+  }
+  
+  .price {
+    font-size: 1.9rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .related-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablet Portrait (max-width: 768px) */
+@media (max-width: 768px) {
+  .product-detail-container {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    margin: 0 1rem 3rem;
+  }
+  
+  .product-info-section h1 {
+    font-size: 1.8rem;
+  }
+  
+  .price {
+    font-size: 1.8rem;
+  }
+  
+  .product-image-section {
+    padding: 1.5rem;
+  }
+  
+  .related-products {
+    padding: 1.5rem;
+    margin: 3rem 1rem 0;
+  }
+  
+  .related-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .related-product-card {
+    padding: 1.2rem;
+  }
+}
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .product-detail-page {
+    padding: 1rem 0;
+  }
+  
+  .product-detail-container {
+    padding: 1rem;
+    margin: 0 0.5rem 2rem;
+    border-radius: 12px;
+  }
+  
+  .product-info-section h1 {
+    font-size: 1.6rem;
+  }
+  
+  .price {
+    font-size: 1.6rem;
+  }
+  
+  .product-meta {
+    gap: 0.5rem;
+  }
+  
+  .brand, .category {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .quantity-controls button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .quantity-controls input {
+    width: 60px;
+    height: 40px;
+  }
+  
+  .add-to-cart-btn, .buy-now-btn {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  .related-products {
+    padding: 1rem;
+    margin: 2rem 0.5rem 0;
+    border-radius: 12px;
+  }
+  
+  .related-products h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .related-products-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .product-features li {
+    font-size: 1rem;
+    padding-left: 1.8rem;
+  }
 }
