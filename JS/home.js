@@ -3,7 +3,7 @@ $(function () {
     let PCParts = [];
     let currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
 
-    
+
     $.getJSON("data/products.json")
         .done(function (data) {
             PCParts = data.PCParts;
@@ -68,23 +68,26 @@ $(function () {
         let $featuredGrid = $("#featured-products-grid");
         if (!$featuredGrid.length) return;
 
-        let featuredProducts = PCParts.slice(0, 3);
+        // Shuffle PCParts and pick 3 random products
+        let shuffled = [...PCParts].sort(() => 0.5 - Math.random());
+        let featuredProducts = shuffled.slice(0, 3);
 
         let cards = featuredProducts.map(part => `
-            <article class="product-card">
-                <a href="HTML/product.html?product=${encodeURIComponent(part.name)}" class="product-link">
-                    <img src="${"HTML/" + part.image}" alt="${part.name}" />
-                    <h3>${part.name}</h3>
-                </a>
-                <p class="price">$${part.price}</p>
-                <button class="add-to-cart" data-product-name="${part.name}">
-                    Add to Cart
-                </button>
-            </article>
-        `).join("");
+        <article class="product-card">
+            <a href="HTML/product.html?product=${encodeURIComponent(part.name)}" class="product-link">
+                <img src="${"HTML/" + part.image}" alt="${part.name}" />
+                <h3>${part.name}</h3>
+            </a>
+            <p class="price">$${part.price}</p>
+            <button class="add-to-cart" data-product-name="${part.name}">
+                Add to Cart
+            </button>
+        </article>
+    `).join("");
 
         $featuredGrid.html(cards);
     }
+
 
 
     function updateCartCount() {
