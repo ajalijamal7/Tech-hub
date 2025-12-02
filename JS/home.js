@@ -63,7 +63,7 @@ function displayFeaturedProducts() {
 
   let displayProducts = featuredProducts.map(part => `
     <article class="product-card">
-      <a href="product.html?product=${encodeURIComponent(part.name)}" class="product-link">
+      <a href="HTML/product.html?product=${encodeURIComponent(part.name)}" class="product-link">
         <img src="${"HTML/"+part.image}" alt="${part.name}" />
         <h3>${part.name}</h3>
       </a>
