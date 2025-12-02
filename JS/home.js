@@ -67,8 +67,7 @@ $(function () {
     function displayFeaturedProducts() {
         let $featuredGrid = $("#featured-products-grid");
         if (!$featuredGrid.length) return;
-
-        // Shuffle PCParts and pick 3 random products
+        
         let shuffled = [...PCParts].sort(() => 0.5 - Math.random());
         let featuredProducts = shuffled.slice(0, 3);
 
