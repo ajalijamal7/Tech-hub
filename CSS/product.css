@@ -1,6 +1,4 @@
-/* =========================================
-   COLOR VARIABLES - DARK THEME
-========================================= */
+
 :root {
   --primary-green: #10b981;
   --green-dark: #059669;
@@ -17,9 +15,7 @@
   --cart-red: #e63946;
 }
 
-/* =========================================
-   PRODUCT DETAIL PAGE - DARK THEME
-========================================= */
+
 .product-detail-page {
   padding: 2rem 0;
   background-color: #161616;
@@ -288,7 +284,7 @@
   font-size: 1.2rem;
 }
 
-/* Related Products */
+
 .related-products {
   margin-top: 4rem;
   padding: 2rem;
@@ -354,18 +350,15 @@
   margin-top: 0.5rem;
 }
 
-/* Animation for add to cart */
+
 .add-to-cart-btn.added {
   background: var(--primary-green);
   border-color: var(--primary-green);
   color: var(--black);
 }
 
-/* =========================================
-   RESPONSIVE BREAKPOINTS (3 SIZES ONLY)
-========================================= */
 
-/* Tablet (max-width: 1024px) */
+
 @media (max-width: 1024px) {
   .product-detail-container {
     gap: 2rem;
@@ -389,7 +382,7 @@
   }
 }
 
-/* Tablet Portrait (max-width: 768px) */
+
 @media (max-width: 768px) {
   .product-detail-container {
     grid-template-columns: 1fr;
@@ -424,7 +417,7 @@
   }
 }
 
-/* Mobile (max-width: 480px) */
+
 @media (max-width: 480px) {
   .product-detail-page {
     padding: 1rem 0;

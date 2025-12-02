@@ -1,53 +1,25 @@
-/* =========================================
-   COLOR VARIABLES - DARK THEME
-========================================= */
+
 :root {
   --green-primary: #10b981;
-  /* main green */
   --green-dark: #0b7552;
-  /* darker green */
   --green-light: #15e9a2;
-  /* lighter green */
   --green-bright: #57fc32;
-  /* bright green for hover */
   --green-glow: rgba(55, 179, 27, 0.3);
-  /* green glow */
-
   --cart-red: #e63946;
-  /* cart count badge */
-
   --bg-dark: #1a1a1a;
-  /* main background */
   --bg-card: #2e2e2e;
-  /* card backgrounds */
   --bg-darker: #484848;
-  /* darker elements */
   --bg-input: #3a3a3a;
-  /* input backgrounds */
-
   --text-green: #10b981;
-  /* green text */
   --text-light: #e0e0e0;
-  /* light text */
   --text-muted: #a0a0a0;
-  /* muted text */
   --text-white: #ffffff;
-  /* white text */
-
   --border-green: #10b981;
-  /* green borders */
   --border-dark: #444444;
-  /* dark borders */
-
   --error-red: #ff4d4f;
-  /* error/delete red */
   --error-dark: #d9363e;
-  /* darker error */
 }
 
-/* =========================================
-   BODY CONTAINER
-========================================= */
 .body-container {
   display: flex;
   gap: 40px;
@@ -62,9 +34,6 @@
   color: var(--text-light);
 }
 
-/* =========================================
-   CART SECTION
-========================================= */
 .cart-section {
   flex: 0 0 60%;
   min-width: 350px;
@@ -324,9 +293,6 @@
   transform: translateY(0);
 }
 
-/* =========================================
-   MODAL
-========================================= */
 .modal {
   display: none;
   position: fixed;
@@ -398,9 +364,6 @@
   box-shadow: 0 2px 8px rgba(230, 57, 70, 0.3);
 }
 
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
 @media (max-width: 768px) {
   .body-container {
     flex-wrap: wrap;
@@ -493,7 +456,7 @@
 
 }
 
-/* Empty Cart State */
+
 .empty-cart {
   text-align: center;
   padding: 60px 20px;

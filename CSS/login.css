@@ -1,46 +1,23 @@
-/* =========================================
-   COLOR VARIABLES - DARK THEME
-========================================= */
+
 :root {
     --green-primary: #10b981;
-    /* main green */
     --green-dark: #13855f;
-    /* darker green */
     --green-light: #15e09d;
-    /* lighter green */
     --green-bright: #0ff1a6;
-    /* bright green */
     --green-glow: rgba(55, 179, 27, 0.3);
-
     --bg-dark: #1a1a1a;
-    /* main background */
     --bg-card: #383838;
-    /* card background */
     --bg-darker: #2e2e2e;
-    /* darker elements */
     --bg-input: #ffffff;
-    /* input background */
-
     --text-green: #10b981;
-    /* green text */
     --text-light: #e0e0e0;
-    /* light text */
     --text-muted: #a0a0a0;
-    /* muted text */
     --text-dark: #000000;
-    /* dark text */
     --text-white: #ffffff;
-    /* white text */
-
     --border-light: #ccc;
-    /* light borders */
     --border-dark: #444444;
-    /* dark borders */
 }
 
-/* =========================================
-   RESET & BASE STYLES
-========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -60,9 +37,6 @@ body {
     color: var(--text-light);
 }
 
-/* =========================================
-   MAIN CONTAINER
-========================================= */
 .body-container {
     background-color: var(--bg-card);
     border-radius: 30px;
@@ -101,9 +75,7 @@ body {
     text-decoration: underline;
 }
 
-/* =========================================
-   BUTTONS
-========================================= */
+
 .body-container button {
     background-color: var(--green-primary);
     color: var(--text-dark);
@@ -140,9 +112,7 @@ body {
 
 }
 
-/* =========================================
-   FORMS
-========================================= */
+
 .body-container form {
     background-color: var(--bg-card);
     display: flex;
@@ -175,9 +145,7 @@ body {
     color: var(--text-muted);
 }
 
-/* =========================================
-   FORM CONTAINERS
-========================================= */
+
 .form-container {
     position: absolute;
     top: 0;
@@ -226,9 +194,7 @@ body {
     }
 }
 
-/* =========================================
-   SOCIAL ICONS
-========================================= */
+
 .social-icons {
     margin: 20px 0;
 }
@@ -256,9 +222,7 @@ body {
     color: var(--text-dark);
 }
 
-/* =========================================
-   TOGGLE CONTAINER
-========================================= */
+
 .toggle-container {
     position: absolute;
     top: 0;
@@ -335,9 +299,7 @@ body {
     margin-bottom: 20px;
 }
 
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
+
 @media (max-width: 768px) {
     body {
         height: auto;
@@ -485,7 +447,7 @@ body {
 }
 
 
-/* Success/Error Messages */
+
 .message {
     padding: 12px;
     border-radius: 8px;
@@ -506,7 +468,7 @@ body {
     border: 1px solid #ff4d4f;
 }
 
-/* Logout Button */
+
 .logout-btn {
     background-color: #e74c3c;
     margin-top: 20px;
@@ -516,7 +478,7 @@ body {
     background-color: #c0392b;
 }
 
-/* Dashboard Styles */
+
 .dashboard {
     text-align: center;
     padding: 20px;
@@ -532,12 +494,12 @@ body {
     margin-bottom: 20px;
 }
 
-/* Hidden state */
+
 .hidden {
     display: none !important;
 }
 
-/* User logged in state */
+
 .user-logged-in .form-container {
     display: none;
 }

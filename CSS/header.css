@@ -56,7 +56,7 @@ header {
     box-sizing: border-box;
     flex-shrink: 0;
     margin-bottom: 0;
-    display: flex; /* or whatever suits your layout */
+    display: flex;
     position: relative;
 }
 
@@ -133,12 +133,6 @@ nav ul li a.active {
     z-index: 1000;
 }
 
-/* =========================================
-   MEDIA QUERIES - RESPONSIVE DESIGN
-========================================= */
-
-/* Tablets */
-/* Tablets */
 @media (max-width: 780px) {
     .logo-wrap img {
         display: none;
@@ -264,7 +258,7 @@ nav ul li a.active {
     }
 }
 
-/* Mobile Devices */
+
 @media (max-width: 480px) {
     .hamburger {
         right: 15px;
@@ -288,7 +282,7 @@ nav ul li a.active {
 
 }
 
-/* Small Mobile Devices */
+
 @media (max-width: 360px) {
     .hamburger {
         font-size: 22px;

@@ -1,17 +1,15 @@
 $(function () {
-document.addEventListener("DOMContentLoaded", function () {
-  // Hamburger menu functionality - jQuery version
-  let $hamburger = $("#hamburger");
-  let $navLinks = $("#navLinks");
-  
-  if ($hamburger.length && $navLinks.length) {
-    $hamburger.on("click", function() {
-      $navLinks.toggleClass("open");
+    document.addEventListener("DOMContentLoaded", function () {
+        let $hamburger = $("#hamburger");
+        let $navLinks = $("#navLinks");
+        
+        if ($hamburger.length && $navLinks.length) {
+            $hamburger.on("click", function() {
+                $navLinks.toggleClass("open");
+            });
+        }
     });
-  }
 
-  // Rest of your vanilla JS code...
-});
     let PCParts = JSON.parse(localStorage.getItem("PCParts"))
     let CPUS = PCParts.filter(part => part.category == "CPU")
     let GPUS = PCParts.filter(part => part.category == "GPU")
@@ -58,16 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (selectedStorage) pc.push(selectedStorage);
         if (!currentUser) return alert("Please login!")
         else {
-
             pc.forEach((part) => {
                 addToCartByName(part)
             })
-
             alert(`${pc} added to cart`);
         }
     })
-
-
 
     function addToCartByName(productName) {
         if (!currentUser) return;
@@ -78,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let cart = allCarts[currentUser.email] || []
 
         let existing = cart.find(item => item.name === product.name);
-
         let currentQtyInCart = existing ? existing.quantity : 0;
 
         if (currentQtyInCart + 1 > product.quantity) {
@@ -94,25 +87,21 @@ document.addEventListener("DOMContentLoaded", function () {
         allCarts[currentUser.email] = cart
         localStorage.setItem("allCarts", JSON.stringify(allCarts));
 
-
         updateCartCount();
     }
-
 
     function updateCartCount() {
         let cartCount = document.getElementById("cart-count");
         if (!cartCount) return;
 
         let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
-
         let cart;
 
         if (currentUser && currentUser.email) {
             cart = allCarts[currentUser.email] || [];
         } else {
-            cart = []; // guest user
+            cart = [];
         }
-
 
         let totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -120,4 +109,3 @@ document.addEventListener("DOMContentLoaded", function () {
         cartCount.style.display = totalQty > 0 ? "inline-block" : "none";
     }
 })
-

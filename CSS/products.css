@@ -1,25 +1,21 @@
-/* =========================================
-   COLOR VARIABLES - DARK THEME
-========================================= */
+
 :root {
-  --green: #28c870;         /* all green accents, borders, buttons */
-  --green-dark: #499638;    /* slightly darker green for text */
-  --green-light: #34d399;   /* lighter green for hover effects */
-  --green-glow: rgba(40, 200, 112, 0.3); /* green glow effects */
-  --price-green: #3c9626;   /* price color */
-  --bg-dark: #131313;       /* page background, inputs */
-  --card-bg: #1a1a1a;       /* product card background */
-  --text-light: #a39e9e;    /* light gray text for filters */
-  --text-white: #ffffff;    /* white text */
-  --cart-red: #e63946;      /* cart count badge */
-  --white: #ffffff;         /* white text/buttons */
-  --black: #000000;         /* black text where needed */
-  --border-dark: #333333;   /* border lines */
+  --green: #28c870;         
+  --green-dark: #499638;    
+  --green-light: #34d399;   
+  --green-glow: rgba(40, 200, 112, 0.3); 
+  --price-green: #3c9626;   
+  --bg-dark: #131313;       
+  --card-bg: #1a1a1a;       
+  --text-light: #a39e9e;    
+  --text-white: #ffffff;    
+  --cart-red: #e63946;      
+  --white: #ffffff;         
+  --black: #000000;         
+  --border-dark: #333333;   
 }
 
-/* =========================================
-   PRODUCTS PAGE - DARK THEME
-========================================= */
+
 .products-page {
   padding-top: 15px;
   margin-top: 40px;
@@ -183,9 +179,7 @@
   box-shadow: 0 2px 8px rgba(230, 57, 70, 0.3);
 }
 
-/* =========================================
-   SEARCH BAR - DARK THEME
-========================================= */
+
 #search-bar-div {
   position: relative;
   width: 100%;
@@ -225,9 +219,7 @@
   transform: translateY(-50%) scale(1.1);
 }
 
-/* =========================================
-   FILTERS - DARK THEME
-========================================= */
+
 .filter-toggle {
   display: none;
   margin-bottom: 20px;
@@ -342,9 +334,7 @@
   margin-top: 10px;
 }
 
-/* =========================================
-   MAIN & GRID - DARK THEME
-========================================= */
+
 main {
   flex: 1;
 }
@@ -376,7 +366,7 @@ main {
   gap: 25px;
 }
 
-/* Empty State */
+
 .empty-state {
   text-align: center;
   padding: 60px 20px;
@@ -395,7 +385,7 @@ main {
   margin-bottom: 10px;
 }
 
-/* Loading State */
+
 .loading {
   display: flex;
   justify-content: center;
@@ -417,11 +407,8 @@ main {
   100% { transform: rotate(360deg); }
 }
 
-/* =========================================
-   MEDIA QUERIES - RESPONSIVE DESIGN
-========================================= */
 
-/* Tablets and Small Laptops */
+
 @media (max-width: 1024px) {
   .products-page {
     gap: 20px;
@@ -437,9 +424,9 @@ main {
   }
 }
 
-/* Tablets */
+
 @media (max-width: 768px) {
-  /* Header styles */
+
   header .container {
     position: relative;
     display: flex;
@@ -502,7 +489,7 @@ main {
     position: static;
   }
 
-  /* Products page styles */
+  
   .products-page {
     flex-direction: column;
     gap: 15px;
@@ -545,7 +532,6 @@ main {
   }
 }
 
-/* Mobile Devices */
 @media (max-width: 480px) {
   .products-page {
     margin-top: 20px;
@@ -606,7 +592,7 @@ main {
   }
 }
 
-/* Small Mobile Devices */
+
 @media (max-width: 360px) {
   .header-search {
     max-width: 130px;
@@ -622,7 +608,7 @@ main {
   }
 }
 
-/* Default header search bar hidden on desktop */
+
 .header-search {
   display: none;
 }
