@@ -41,14 +41,14 @@ $(function () {
         let currentUser = getCurrentUser();
         if (currentUser) {
             $container.addClass("user-logged-in");
-            $("#welcome_Message").text(`Hello ${currentUser.name}!`);
+            $("#welcome_Message").text(`Hello, ${currentUser.name}!`);
             $("#welcomeMessage").text("Welcome!");
             $("#welcomeSubtext").text("You are successfully logged in and can now access all site features.");
             $("#register").text("Logout").removeClass("register-btn").addClass("logout-btn");
             $("#login-logout-message").text("We're grateful you're here. Let's continue the journey.");
         } else {
             $container.removeClass("user-logged-in active");
-            $("#welcome_Message").text("Hello, !");
+            $("#welcome_Message").text("Hello !");
             $("#welcomeSubtext").text("Register with your personal details to use all of site features");
             $("#register").text("Sign Up").removeClass("logout-btn").addClass("register-btn");
             $("#login-logout-message").text("Register with your personal details to use all of site features");
@@ -73,6 +73,13 @@ $(function () {
     });
 
     $("#registerBtn").on("click", function (e) {
+
+        let form = $(this).closest("form")[0];
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
         e.preventDefault();
         let name = $(".sign-up input[type='text']").val().trim();
         let email = $(".sign-up input[type='email']").val().trim();
@@ -95,6 +102,14 @@ $(function () {
     });
 
     $("#loginBtn").on("click", function (e) {
+        let form = $(this).closest("form")[0];
+
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
         e.preventDefault();
         let email = $(".sign-in input[type='email']").val().trim();
         let password = $(".sign-in input[type='password']").val();
@@ -109,4 +124,19 @@ $(function () {
             alert("Incorrect email or password, or user not found.");
         }
     });
+
+    $(".password-field span").on("click", function () {
+        let $icon = $(this);
+        let $input = $icon.siblings("input");
+
+        if ($input.attr("type") === "password") {
+            $input.attr("type", "text");
+            $icon.text("visibility");
+        } else {
+            $input.attr("type", "password");
+            $icon.text("visibility_off");
+        }
+    });
+
+
 });

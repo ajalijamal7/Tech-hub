@@ -8,6 +8,7 @@
   <link rel="icon" type="image/x-icon" href="../HTML/Icons/TechHub_Logo.png">
   <link rel="stylesheet" href="../CSS/header.css" />
   <link rel="stylesheet" href="../CSS/login.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../JS/cartCount.js"></script>
   <script src="../JS/login.js" defer></script>
@@ -51,8 +52,14 @@
         </div>
         <span>or use your email for registeration</span>
         <input type="text" placeholder="Name" />
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <input type="email" name="email" placeholder="Email" required />
+        <div class="password-field">
+          <input type="password" id="signupPassword" placeholder="Password" required />
+          <span class="material-symbols-outlined">
+            visibility_off
+          </span>
+        </div>
+
         <button id="registerBtn" type="submit">Sign Up</button>
       </form>
     </div>
@@ -66,9 +73,14 @@
           <a href="#" class="icon"><img src="Icons/icons8-x-50.png" alt="X"></a>
         </div>
         <span>or use your email password</span>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <a href="#">Forget Your Password?</a>
+        <input type="email" placeholder="Email" name="email" required />
+        <div class="password-field">
+          <input type="password" id="loginPassword" placeholder="Password" required />
+          <span class="material-symbols-outlined">
+            visibility_off
+          </span>
+        </div>
+
         <button id="loginBtn">Sign In</button>
       </form>
     </div>
