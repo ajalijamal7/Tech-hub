@@ -53,23 +53,39 @@ body {
   padding: 2rem 0;
 }
 
-
-
-
 #mini-checkout {
-  background: var(--dark-bg);
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  flex-wrap: wrap;
   gap: 15px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  min-height: 900px;
+  margin-bottom: 50px;
+  flex: 1 1;
+  padding: 50px 40px;
+  background: var(--dark-bg);
+  border-radius: 16px;
   border: 2px solid var(--green);
-  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: sticky;
+
 }
+
+#mini-checkout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--green);
+  box-shadow: 0 0 15px var(--green-glow);
+}
+
 
 .service-card {
   background: var(--dark-bg);
@@ -221,9 +237,12 @@ body {
 
 
 .pc-builder {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex: 1 1;
   background: var(--dark-bg);
   padding: 50px 40px;
-  min-width: 500px;
   max-width: 650px;
   min-height: 900px;
   margin-bottom: 50px;
@@ -268,9 +287,7 @@ body {
   gap: 25px;
 }
 
-.form-group {
-  text-align: left;
-}
+
 
 .form-group label {
   display: block;
@@ -295,21 +312,24 @@ body {
 }
 
 
-#mini-checkout {
-  display: flex;
-  min-width: 450px;
-  min-height: 700px;
-  flex: 0 1;
-  background: var(--dark-bg);
-  border-radius: 16px;
-  padding: 25px;
-  border: 2px solid var(--green);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  position: sticky;
-  top: 20px;
-  height: 500px;
-  overflow-y: auto;
-  overflow-x: hidden;
+
+.options::-webkit-scrollbar {
+  width: 8px;
+}
+
+.options::-webkit-scrollbar-track {
+  background: var(--darker-bg);
+  border-radius: 8px;
+}
+
+.options::-webkit-scrollbar-thumb {
+  background: var(--green);
+  border-radius: 8px;
+  box-shadow: 0 0 2px var(--green-glow);
+}
+
+.options::-webkit-scrollbar-thumb:hover {
+  background: var(--green-light);
 }
 
 #mini-checkout::-webkit-scrollbar {
@@ -404,13 +424,14 @@ body {
   flex-wrap: wrap;
 }
 
-
 .form-group {
+  text-align: left;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 10px;
 }
+
 
 .selected-parts-btns {
   flex-grow: 1;
@@ -529,24 +550,7 @@ body {
   font-weight: 500;
 }
 
-.options::-webkit-scrollbar {
-  width: 8px;
-}
 
-.options::-webkit-scrollbar-track {
-  background: var(--darker-bg);
-  border-radius: 8px;
-}
-
-.options::-webkit-scrollbar-thumb {
-  background: var(--green);
-  border-radius: 8px;
-  box-shadow: 0 0 2px var(--green-glow);
-}
-
-.options::-webkit-scrollbar-thumb:hover {
-  background: var(--green-light);
-}
 
 
 
@@ -565,10 +569,29 @@ body {
     padding: 25px 20px;
   }
 
-  .pc-builder {
-    padding: 35px 25px;
-    margin: 40px 15px;
+  #pc-builder-container {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
   }
+
+  .pc-builder,
+  #mini-checkout {
+    max-width: 90%;
+    margin: 0 auto 30px auto;
+  }
+
+  .pc-builder {
+    margin-top: 40px;
+    padding: 35px 25px;
+  }
+
+  #mini-checkout {
+    padding: 20px 15px;
+    min-height: 100%;
+    min-width: 80%;
+  }
+
 
   .pc-builder h2 {
     font-size: 2rem;
@@ -586,7 +609,7 @@ body {
 
   .service-img {
     width: 100px;
-    height: 100px;
+    min-height: 100px;
   }
 
   .service-title {
@@ -605,6 +628,15 @@ body {
     padding: 14px 0;
     font-size: 1.1rem;
   }
+}
+
+.pc-builder {
+  padding: 25px 15px;
+}
+
+#mini-checkout {
+  padding: 15px 10px;
+  height: 100%;
 }
 
 @keyframes pulse {

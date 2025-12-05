@@ -208,14 +208,26 @@ $(function () {
     }
 
     $("#order-parts").on("click", () => {
-        if (currentUser) {
-            orderParts(pc)
-            $("#mini-checkout-list").empty()
-            alert(`${pc} added to cart`);
+        if (!currentUser) {
+            alert("Please login!");
+            return;
         }
-        else{
-            alert ("Please login!")
+
+        if (pc.length === 0) {
+            alert("Please select components before adding to cart!");
+            return;
         }
+
+        orderParts(pc);
+        $("#mini-checkout-list").empty();
+
+        $("#select-cpu").text("Select CPU")
+        $("#select-gpu").text("Select GPU")
+        $("#select-motherboard").text("Select Motherboard")
+        $("#select-ram").text("Select RAM")
+        $("#select-storage").text("Select Storage")
+        alert(`${pc} added to cart`);
+
 
     })
 
