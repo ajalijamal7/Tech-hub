@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../CSS/services.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../JS/services.js"></script>
-<link rel="icon" type="image/x-icon" href="../HTML/Icons/TechHub_Logo.png">
+  <link rel="icon" type="image/x-icon" href="../HTML/Icons/TechHub_Logo.png">
   <script src="../JS/hamburger.js" defer></script>
 </head>
 
@@ -68,51 +68,66 @@
             PC. Fast turnaround and affordable pricing guaranteed.</p>
         </div>
       </article>
+    </div>
 
+    <div id="pc-builder-container">
       <section class="pc-builder">
         <h2>Build Your PC</h2>
         <p>Choose your components and order your custom PC.</p>
         <form>
           <div class="form-group">
-            <label for="cpu">CPU</label>
-            <select id="cpu" name="cpu">
-              <option value="" disabled selected>Select CPU</option>
-            </select>
+            <div class="custom-select">
+              <div class="selected" id="select-cpu">Select CPU</div>
+              <div class="options" id="options-cpu" data-part="cpu">
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="gpu">GPU</label>
-            <select id="gpu" name="gpu">
-              <option value="" disabled selected>Select GPU</option>
-            </select>
+            <div class="custom-select">
+              <div class="selected" id="select-gpu">Select GPU</div>
+              <div class="options" id="options-gpu" data-part="gpu">
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="Motherboard">Motherboard</label>
-            <select id="motherboard" name="Motherboard">
-              <option value="" disabled selected>Select Motherboard</option>
-            </select>
+            <div class="custom-select">
+              <div class="selected" id="select-motherboard">Select Motherboard</div>
+              <div class="options" id="options-motherboard" data-part="motherboard">
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="ram">RAM</label>
-            <select id="ram" name="ram">
-              <option value="" disabled selected>Select RAM</option>
-            </select>
+            <div class="custom-select">
+              <div class="selected" id="select-ram">Select RAM</div>
+              <div class="options" id="options-ram" data-part="ram">
+              </div>
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="storage">Storage</label>
-            <select id="storage" name="storage">
-              <option value="" disabled selected>Select Storage</option>
-            </select>
+            <div class="custom-select">
+              <div class="selected" id="select-storage">Select Storage</div>
+              <div class="options" id="options-storage" data-part="storage">
+              </div>
+            </div>
           </div>
-
-          <button type="submit" class="order-btn" id="btn-order">Order Now</button>
         </form>
       </section>
 
 
+      <div id="mini-checkout">
+        <h3>Your Selected Parts</h3>
+        <ul id="mini-checkout-list"></ul>
+        <div id="mini-total">
+          Total Price: <span id="mini-total-price"></span>
+        </div>
+        <div id="btns-container">
+          <button class="selected-parts-btns" id="order-parts">Order Parts</button>
+        </div>
+      </div>
     </div>
   </div>
 </body>

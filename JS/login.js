@@ -83,7 +83,7 @@ $(function () {
         e.preventDefault();
         let name = $(".sign-up input[type='text']").val().trim();
         let email = $(".sign-up input[type='email']").val().trim();
-        let password = $(".sign-up input[type='password']").val();
+        let password = $("#signupPassword").val();
         if (!name || !email || !password) {
             alert("Please fill all fields.");
             return;
@@ -112,7 +112,7 @@ $(function () {
 
         e.preventDefault();
         let email = $(".sign-in input[type='email']").val().trim();
-        let password = $(".sign-in input[type='password']").val();
+        let password = $("#loginPassword").val();
         let users = getUsers();
         let user = $.grep(users, function (u) { return u.email === email && u.password === password; })[0];
         if (user) {
