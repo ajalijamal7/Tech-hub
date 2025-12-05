@@ -207,22 +207,16 @@ $(function () {
         })
     }
 
-    function orderPc(parts) {
-        if (!currentUser) return;
-
-        let allCarts = JSON.parse(localStorage.getItem("allCarts")) || {};
-        let cart = allCarts[currentUser.email] || []
-
-        allCarts[currentUser.email] = cart
-        localStorage.setItem("allCarts", JSON.stringify(allCarts));
-
-        updateCartCount();
-    }
-
     $("#order-parts").on("click", () => {
-        orderParts(pc)
-        $("#mini-checkout-list").empty()
-        alert(`${pc} added to cart`);
+        if (currentUser) {
+            orderParts(pc)
+            $("#mini-checkout-list").empty()
+            alert(`${pc} added to cart`);
+        }
+        else{
+            alert ("Please login!")
+        }
+
     })
 
     $("#order-pc").on("click", () => {
