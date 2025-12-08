@@ -1,6 +1,7 @@
 $(function () {
 
     let PCParts = [];
+    let filteredList = [];
     let Products_grid = $(".product-grid");
     let currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
 
@@ -24,6 +25,7 @@ $(function () {
 
 
     function initializeApp() {
+        filteredList = PCParts;
         initializeEventListeners();
         displayItems(PCParts);
         updateCartCount();
@@ -80,7 +82,7 @@ $(function () {
 
         function handleSearch(event) {
             let query = $(event.target).val().toUpperCase();
-            let results = PCParts.filter(part =>
+            let results = filteredList.filter(part =>
                 query === "" || part.name.toUpperCase().includes(query)
             );
             displayItems(results);
@@ -144,13 +146,13 @@ $(function () {
     function applyFilters() {
         let { brand, category } = getSelectedFilters();
 
-        let filtered = PCParts.filter(part => {
+         filteredList = PCParts.filter(part => {
             let matchBrand = brand === "ALL" || part.brand.toUpperCase() === brand;
             let matchCategory = category === "ALL" || part.category.toUpperCase() === category;
             return matchBrand && matchCategory;
         });
 
-        displayItems(filtered);
+        displayItems(filteredList);
     }
 
 
